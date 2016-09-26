@@ -2,7 +2,8 @@ const   sass = require('gulp-sass'),
         browserSync = require('browser-sync').create(),
         concatCss = require('gulp-concat-css'),
         sourcemaps = require('gulp-sourcemaps'),
-        autoprefixer = require('gulp-autoprefixer');
+        autoprefixer = require('gulp-autoprefixer')
+        cleanCSS = require('gulp-clean-css');
 
 // TODO:
 // 1. Export paths to separate module
@@ -11,6 +12,7 @@ const   sass = require('gulp-sass'),
 // 4. browserlist
 
 module.exports = (gulp) => {
+
     gulp.task('sass', () => {
         return  gulp
                     .src('./src/scss/**/*.scss')
@@ -18,6 +20,13 @@ module.exports = (gulp) => {
                     .pipe(sass().on('error', sass.logError))
                     .pipe(gulp.dest('./.tmp/css'))
                     .pipe(browserSync.stream());
+    });
+
+    gulp.task('sass:prod', () => {
+        return  gulp
+                    .src('./src/scss/**/*.scss')
+                    .pipe(sass().on('error', sass.logError))
+                    .pipe(gulp.dest('./.tmp/css'));
     });
 
     gulp.task('concat', () => {
@@ -29,6 +38,15 @@ module.exports = (gulp) => {
                     .pipe(gulp.dest('./dist'));
     });
 
+    gulp.task('concat:prod', () => {
+        return  gulp
+                    .src('./.tmp/css/*.css')
+                    .pipe(concatCss('app.css'))
+                    .pipe(cleanCSS({ compatibility: 'ie8' }))
+                    .pipe(autoprefixer())
+                    .pipe(gulp.dest('./dist'));
+    });
+
     gulp.task('style', ['sass', 'concat']);
-    gulp.task('style:prod', []); 
+    gulp.task('style:prod', ['sass:prod', 'concat:prod']); 
 };
