@@ -3,7 +3,8 @@ const   sass = require('gulp-sass'),
         concatCss = require('gulp-concat-css'),
         sourcemaps = require('gulp-sourcemaps'),
         autoprefixer = require('gulp-autoprefixer')
-        cleanCSS = require('gulp-clean-css');
+        cleanCSS = require('gulp-clean-css'),
+        config = require('./config')();
 
 // TODO:
 // 1. Export paths to separate module
@@ -15,18 +16,18 @@ module.exports = (gulp) => {
 
     gulp.task('sass', () => {
         return  gulp
-                    .src('./src/scss/**/*.scss')
+                    .src(config.css.scss)
                     .pipe(sourcemaps.init())
                     .pipe(sass().on('error', sass.logError))
-                    .pipe(gulp.dest('./.tmp/css'))
+                    .pipe(gulp.dest(config.css.cssDir))
                     .pipe(browserSync.stream());
     });
 
     gulp.task('sass:prod', () => {
         return  gulp
-                    .src('./src/scss/**/*.scss')
+                    .src(config.css.scss)
                     .pipe(sass().on('error', sass.logError))
-                    .pipe(gulp.dest('./.tmp/css'));
+                    .pipe(gulp.dest(config.css.cssDir));
     });
 
     gulp.task('concat', () => {
