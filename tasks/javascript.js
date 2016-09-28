@@ -12,13 +12,11 @@ module.exports = gulp => {
   // -- Unit script tasks
 
   gulp.task('lint', () => {
-    gulp.watch('./src/**/*.js', ['javascript']);
-
     return gulp.src('./src/**/*.js')
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
-      .pipe(gulp.dest('./dist/js'));
+      .pipe(gulp.dest('./dist/js/'));
   });
 
   gulp.task('lint:prod', () => {
@@ -27,7 +25,7 @@ module.exports = gulp => {
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
-      .pipe(gulp.dest('./dist/js'));
+      .pipe(gulp.dest('./dist/js/'));
   });
 
   // -- Main script tasks
