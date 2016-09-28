@@ -16,7 +16,7 @@ module.exports = gulp => {
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
-      .pipe(gulp.dest('./dist/js/'));
+      .pipe(gulp.dest('./dist/'));
   });
 
   gulp.task('lint:prod', () => {
