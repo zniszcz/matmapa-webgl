@@ -1,5 +1,4 @@
 const   sass = require('gulp-sass'),
-        browserSync = require('browser-sync').create(),
         concatCss = require('gulp-concat-css'),
         sourcemaps = require('gulp-sourcemaps'),
         autoprefixer = require('gulp-autoprefixer')
@@ -12,22 +11,18 @@ const   sass = require('gulp-sass'),
 // 3. sourcemaps bugfix
 // 4. browserlist
 
-module.exports = (gulp) => {
+module.exports = (gulp, plugins) => {
 
     gulp.task('sass', () => {
-        return  gulp
-                    .src(config.css.scss)
-                    .pipe(sourcemaps.init())
-                    .pipe(sass().on('error', sass.logError))
-                    .pipe(gulp.dest(config.css.cssDir))
-                    .pipe(browserSync.stream());
-    });
 
-    gulp.task('sass:prod', () => {
         return  gulp
-                    .src(config.css.scss)
+                    .src('./src/scss/**/*.scss')
+                    //.pipe(sourcemaps.init())
                     .pipe(sass().on('error', sass.logError))
-                    .pipe(gulp.dest(config.css.cssDir));
+                    .pipe(autoprefixer())
+                    //.pipe(sourcemaps.write('./dist/css'))
+                    .pipe(gulp.dest('./src/css'))
+                    // .pipe(plugins.browserSync.stream());
     });
 
     gulp.task('concat', () => {
@@ -48,6 +43,5 @@ module.exports = (gulp) => {
                     .pipe(gulp.dest('./dist'));
     });
 
-    gulp.task('style', ['sass', 'concat']);
-    gulp.task('style:prod', ['sass:prod', 'concat:prod']); 
+    gulp.task('style', ['sass']);
 };
