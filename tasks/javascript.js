@@ -4,7 +4,7 @@ const eslint = require('gulp-eslint');
 const rev = require('gulp-rev');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
-const rename = require('gulp-rename');
+// const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 
 module.exports = gulp => {
@@ -25,8 +25,8 @@ module.exports = gulp => {
 
   gulp.task('javascript-prod', ['lint'], () => {
     return gulp.src('../src/js/**/*.js')
-      .pipe(concat())
-      .pipe(rename('app.min.js'))
+      .pipe(concat('app.min.js'))
+      // .pipe(rename('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
       .pipe(gulp.dest('../dist/js'));
