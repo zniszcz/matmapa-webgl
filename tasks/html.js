@@ -1,18 +1,18 @@
-const   useref = require('gulp-useref'),
-        gulpif = require('gulp-if'),
-        uglify = require('gulp-uglify'), 
-        autoprefixer = require('gulp-autoprefixer'),
-        cleanCSS = require('gulp-clean-css');
+'use strict';
 
-module.exports = (gulp) => {
+const useref = require('gulp-useref');
+const gulpif = require('gulp-if');
+const uglify = require('gulp-uglify');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
 
-    gulp.task('html', () => {
-        return gulp
-                .src('./src/**/*.html')
-                .pipe(useref())
-                .pipe(gulpif('*.js', uglify()))
-                .pipe(gulpif('*.css', cleanCSS())
-                .pipe(gulp.dest('./dist')));
-
-    });
-}
+module.exports = gulp => {
+  gulp.task('html', () => {
+    return gulp.src('./src/**/*.html')
+      .pipe(useref())
+      .pipe(gulpif('*.js', uglify()))
+      .pipe(gulpif('*.css', cleanCSS())
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('./dist')));
+  });
+};

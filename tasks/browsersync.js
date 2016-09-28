@@ -1,10 +1,12 @@
-const   browserSync = require('browser-sync').create();
+'use strict';
 
-module.exports = (gulp) => {
-    return () => {
-        browserSync.init({
-            injectChanges: true,
-            server: "./src/"
-        });
-    }
+const browserSync = require('browser-sync').create();
+
+module.exports = () => {
+  return () => {
+    browserSync.init({
+      injectChanges: true,
+      server: './src/',
+    });
+  };
 };

@@ -1,11 +1,13 @@
-module.exports = (gulp) => {
-    return {
-        css: {
-            scss: "./src/scss/**/*.{scss,sass}",
-            scssDir: "./src/scss",
-            css: "./.tmp/css/**/*.css",
-            cssDir: "./.tmp/css",
-            dist: "./dist"  
-        } 
-    };
+'use strict';
+
+module.exports = () => {
+  return {
+    css: {
+      scss: './src/scss/**/*.scss',
+      scssDir: './src/scss',
+      css: './.tmp/css/**/*.css',
+      cssDir: './.tmp/css',
+      dist: './dist',
+    },
+  };
 };
