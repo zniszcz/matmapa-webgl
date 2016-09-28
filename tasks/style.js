@@ -1,45 +1,55 @@
 'use strict';
 
 const sass = require('gulp-sass');
-const concatCss = require('gulp-concat-css');
-const sourcemaps = require('gulp-sourcemaps');
-const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+const rev = require('gulp-rev');
+// const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const rename = require('gulp-rename');
+const gutil = require('gulp-util');
+
 // const config = require('./config')();
 
-// TODO:
-// 1. Export paths to separate module
-// 2. prod build
-// 3. sourcemaps bugfix
-// 4. browserlist
+const postcssTasks = [
+  autoprefixer(),
+];
 
-module.exports = /* ( */ gulp /* , pluginsi) */ => {
+const postcssTasksProd = [
+  autoprefixer(),
+  cssnano(),
+];
+
+module.exports = gulp => {
+
+  // -- Unit style tasks
 
   gulp.task('sass', () => {
     return gulp.src('./src/scss/**/*.scss')
-      // .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
-      .pipe(autoprefixer())
-      // .pipe(sourcemaps.write('./dist/css'))
-      .pipe(gulp.dest('./src/css'));
-      // .pipe(plugins.browserSync.stream());
+      .pipe(postcss(postcssTasks))
+      .pipe(gulp.dest('./dist/css'));
   });
 
-  gulp.task('concat', () => {
-    return gulp.src('./.tmp/css/*.css')
-      .pipe(concatCss('app.css'))
-      .pipe(autoprefixer())
-      .pipe(sourcemaps.write('./dist'))
-      .pipe(gulp.dest('./dist'));
+  gulp.task('sass:prod', () => {
+    return gulp.src('./src/scss/**/*.scss')
+      .pipe(sass().on('error', sass.logError))
+      .pipe(postcss(postcssTasksProd))
+      .pipe(rename('app.min.css'))
+      .pipe(rev())
+      .pipe(gulp.dest('./dist/css'));
   });
 
-  gulp.task('concat:prod', () => {
-    return gulp.src('./.tmp/css/*.css')
-      .pipe(concatCss('app.css'))
-      .pipe(cleanCSS({compatibility: 'ie8'}))
-      .pipe(autoprefixer())
-      .pipe(gulp.dest('./dist'));
+  // -- Main style tasks
+
+  gulp.task('style', ['sass'], () => {
+    gulp.watch('./src/scss/**/*.scss', ['sass']);
+
+    return gutil.log('Task for serving stylesheets in developer mode.');
   });
 
-  gulp.task('style', ['sass']);
+  gulp.task('style:prod', ['sass:prod'], () => {
+    return gutil.log('Task for building stylesheets in production mode.');
+  });
+
 };
