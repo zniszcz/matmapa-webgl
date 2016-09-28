@@ -1,19 +1,14 @@
 const   gulp = require('gulp'),
-        $ = require('gulp-load-plugins')()
-        browserSync = require('browser-sync').create();
+        plugins = require('gulp-load-plugins')()
+        // browserSync = require('tasks/browsersync.js');
 
-$.loadSubtasks('tasks/**/*.js');
+plugins.loadSubtasks('tasks/**/*.js');
 
 // Main tasks
 gulp.task('default', ['style', 'javascript'], () => {
-    browserSync.init({
-        server: "./dist/"
-    });
-
-    gulp.watch('./dist/**/*.html').on("change", browserSync.reload);
     gulp.watch('./src/js/**/*.js', ['javascript']);
-    gulp.watch('./src/scss/**/*.{sass,scss}', ['style']);
+    gulp.watch('./src/scss/**/*.scss', ['style']);
+    // gulp.watch('./src/*').on("change", browserSync.reload);
 });
 
-gulp.task('build', [ 'clean', 'style:prod', 'javascript:prod']);
-
+gulp.task('build', [ 'clean-tmp', 'clean-prod', 'style:prod', 'javascript:prod']);
