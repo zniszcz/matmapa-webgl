@@ -2,6 +2,7 @@
 
 // const useref = require('gulp-useref');
 const inject = require('gulp-inject');
+const gutil = require('gulp-util');
 
 module.exports = gulp => {
 
@@ -22,8 +23,12 @@ module.exports = gulp => {
   // -- Main html tasks
 
   gulp.task('html', ['inject-html'], () => {
+    gutil.log('Task for serving templates in developer mode');
+
     return gulp.watch('./src/html/**/*.html', ['inject-html']);
   });
 
-  gulp.task('html:prod', ['inject-html:prod']);
+  gulp.task('html:prod', ['inject-html:prod'], () => {
+    gutil.log('Task for building templates in production mode.');
+  });
 };
