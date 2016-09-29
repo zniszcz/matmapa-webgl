@@ -15,20 +15,20 @@ module.exports = gulp => {
   });
 
   gulp.task('inject-html:prod', () => {
-    return gulp.src('./src/**/*.html')
+    return gulp.src('./src/html/**/*.html')
       .pipe(inject(gulp.src(['./dist/css/*.min.css', './dist/js/*.min.js'], {read: false})))
       .pipe(gulp.dest('./dist'));
   });
 
   // -- Main html tasks
 
-  gulp.task('html', ['inject-html'], () => {
+  gulp.task('html', ['clean', 'javascript', 'style', 'inject-html'], () => {
     gutil.log('Task for serving templates in developer mode');
 
     return gulp.watch('./src/html/**/*.html', ['inject-html']);
   });
 
-  gulp.task('html:prod', ['inject-html:prod'], () => {
+  gulp.task('html:prod', ['clean', 'javascript:prod', 'style:prod','inject-html:prod'], () => {
     gutil.log('Task for building templates in production mode.');
   });
 };
