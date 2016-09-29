@@ -3,14 +3,11 @@
 const clean = require('gulp-clean');
 
 module.exports = gulp => {
-  gulp.task('clean-tmp', () => {
-    return gulp.src('./.tmp/*', {read: false, force: true})
-      .pipe(clean());
-  });
 
-  gulp.task('clean-dist', () => {
+  gulp.task('clean:prod', () => {
     return gulp
       .src('./dist/*', {read: false, force: true})
       .pipe(clean());
   });
+
 };

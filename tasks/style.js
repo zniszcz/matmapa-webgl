@@ -2,14 +2,11 @@
 
 const sass = require('gulp-sass');
 const rev = require('gulp-rev');
-// const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 const gutil = require('gulp-util');
-
-// const config = require('./config')();
 
 const postcssTasks = [
   autoprefixer(),

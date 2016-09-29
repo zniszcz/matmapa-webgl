@@ -11,7 +11,7 @@ module.exports = gulp => {
 
   // -- Unit script tasks
 
-  gulp.task('lint', () => {
+  gulp.task('build-javascript', () => {
     return gulp.src('./src/**/*.js')
       .pipe(eslint())
       .pipe(eslint.format())
@@ -19,7 +19,7 @@ module.exports = gulp => {
       .pipe(gulp.dest('./dist/'));
   });
 
-  gulp.task('lint:prod', () => {
+  gulp.task('build-javascript:prod', () => {
     return gulp.src('./src/js/**/*.js')
       .pipe(babel())
       .pipe(concat('app.min.js'))
@@ -30,13 +30,13 @@ module.exports = gulp => {
 
   // -- Main script tasks
   
-  gulp.task('javascript', ['lint'], () => {
-    gulp.watch('./src/**/*.js', ['lint']);
+  gulp.task('javascript', ['build-javascript'], () => {
+    gulp.watch('./src/**/*.js', ['build-javascript']);
 
     return gutil.log('Task for serving scripts in developer mode.');
   });
 
-  gulp.task('javascript:prod', ['lint:prod'], () => {
+  gulp.task('javascript:prod', ['build-javascript:prod'], () => {
     return gutil.log('Task for building scripts in production mode.');
   });
 };
