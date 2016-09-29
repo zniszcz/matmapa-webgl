@@ -30,13 +30,13 @@ module.exports = gulp => {
 
   // -- Main style tasks
 
-  gulp.task('style', ['sass'], () => {
+  gulp.task('style', ['clean', 'sass'], () => {
     gulp.watch('./src/scss/**/*.scss', ['sass']);
 
     return gutil.log('Task for serving stylesheets in developer mode.');
   });
 
-  gulp.task('style:prod', ['sass:prod'], () => {
+  gulp.task('style:prod', ['clean', 'sass:prod'], () => {
     return gutil.log('Task for building stylesheets in production mode.');
   });
 
