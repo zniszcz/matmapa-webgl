@@ -7,6 +7,7 @@ const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const gutil = require('gulp-util');
 const config = require('./config');
+const browsersync = require('./browsersync.task').browsersync;
 
 module.exports = gulp => {
 
@@ -18,7 +19,8 @@ module.exports = gulp => {
       .pipe(eslint.format())
       .pipe(babel())
       .pipe(concat('app.js'))
-      .pipe(gulp.dest(config.dist+'/js/'));
+      .pipe(gulp.dest(config.dist+'/js/'))
+      .pipe(browsersync.stream());
   });
 
   gulp.task('build-javascript:prod', () => {

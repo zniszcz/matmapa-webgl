@@ -8,7 +8,7 @@ plugins.loadSubtasks('tasks/**/*.task.js');
 
 // Main tasks
 gulp.task('default', cb => {
-  runSequence('clean', ['style', 'javascript'], 'html', cb);
+  runSequence('clean', 'browser-sync', ['style', 'javascript'], 'html', cb);
 });
 
 gulp.task('build', cb => {

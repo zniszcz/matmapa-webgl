@@ -9,6 +9,7 @@ const rename = require('gulp-rename');
 const gutil = require('gulp-util');
 const config = require('./config');
 const glob = require('gulp-sass-glob');
+const browsersync = require('./browsersync.task').browsersync;
 
 module.exports = gulp => {
 
@@ -20,7 +21,9 @@ module.exports = gulp => {
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
       .pipe(rename('app.css'))
-      .pipe(gulp.dest(config.dist+'/css'));
+      .pipe(gulp.dest(config.dist+'/css'))
+      .pipe(browsersync.stream());
+
   });
 
   gulp.task('sass:prod', () => {
