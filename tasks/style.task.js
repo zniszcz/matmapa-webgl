@@ -23,7 +23,10 @@ module.exports = gulp => {
   gulp.task('sass:prod', () => {
     return gulp.src(config.scss)
       .pipe(sass().on('error', sass.logError))
-      .pipe(postcss([autoprefixer(), cssnano()]))
+      .pipe(postcss([
+        autoprefixer(),
+        cssnano(),
+      ]))
       .pipe(rename('app.min.css'))
       .pipe(rev())
       .pipe(gulp.dest(config.dist+'/css'));
