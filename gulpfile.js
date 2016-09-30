@@ -2,9 +2,15 @@
 
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
+const runSequence = require('run-sequence');
 
 plugins.loadSubtasks('tasks/**/*.task.js');
 
 // Main tasks
-gulp.task('default', ['clean', 'style', 'javascript', 'html']);
-gulp.task('build', ['clean', 'style:prod', 'javascript:prod', 'html:prod']);
+gulp.task('default', cb => {
+  runSequence('clean', ['style', 'javascript'], 'html', cb);
+});
+
+gulp.task('build', cb => {
+  runSequence('clean', ['style:prod', 'javascript:prod'], 'html:prod', cb);
+});

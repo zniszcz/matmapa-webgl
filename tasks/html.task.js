@@ -23,13 +23,13 @@ module.exports = gulp => {
 
   // -- Main html tasks
 
-  gulp.task('html', ['clean', 'javascript', 'style', 'inject-html'], () => {
+  gulp.task('html', ['javascript', 'style', 'inject-html'], () => {
     gutil.log('Task for serving templates in developer mode');
 
     return gulp.watch(config.html, ['inject-html']);
   });
 
-  gulp.task('html:prod', ['clean', 'javascript:prod', 'style:prod','inject-html:prod'], () => {
+  gulp.task('html:prod', ['javascript:prod', 'style:prod','inject-html:prod'], () => {
     gutil.log('Task for building templates in production mode.');
   });
 };

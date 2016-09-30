@@ -17,7 +17,7 @@ module.exports = gulp => {
     return gulp.src(config.scss)
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
-      .pipe(gulp.dest(config.dist));
+      .pipe(gulp.dest(config.dist+'/css/app.css'));
   });
 
   gulp.task('sass:prod', () => {
@@ -31,13 +31,13 @@ module.exports = gulp => {
 
   // -- Main style tasks
 
-  gulp.task('style', ['clean', 'sass'], () => {
+  gulp.task('style', ['sass'], () => {
     gulp.watch(config.scss, ['sass']);
 
     return gutil.log('Task for serving stylesheets in developer mode.');
   });
 
-  gulp.task('style:prod', ['clean', 'sass:prod'], () => {
+  gulp.task('style:prod', ['sass:prod'], () => {
     return gutil.log('Task for building stylesheets in production mode.');
   });
 

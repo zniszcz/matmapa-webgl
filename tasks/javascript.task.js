@@ -31,13 +31,13 @@ module.exports = gulp => {
 
   // -- Main script tasks
   
-  gulp.task('javascript', ['clean', 'build-javascript'], () => {
+  gulp.task('javascript', ['build-javascript'], () => {
     gulp.watch(config.es, ['build-javascript']);
 
     return gutil.log('Task for serving scripts in developer mode.');
   });
 
-  gulp.task('javascript:prod', ['clean', 'build-javascript:prod'], () => {
+  gulp.task('javascript:prod', ['build-javascript:prod'], () => {
     return gutil.log('Task for building scripts in production mode.');
   });
 };
