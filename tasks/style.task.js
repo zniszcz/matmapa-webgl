@@ -7,31 +7,32 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 const gutil = require('gulp-util');
+const config = require('./config');
 
 module.exports = gulp => {
 
   // -- Unit style tasks
 
   gulp.task('sass', () => {
-    return gulp.src('./src/scss/**/*.scss')
+    return gulp.src(config.scss)
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
-      .pipe(gulp.dest('./dist/css'));
+      .pipe(gulp.dest(config.dist));
   });
 
   gulp.task('sass:prod', () => {
-    return gulp.src('./src/scss/**/*.scss')
+    return gulp.src(config.scss)
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(rename('app.min.css'))
       .pipe(rev())
-      .pipe(gulp.dest('./dist/css'));
+      .pipe(gulp.dest(config.dist+'/css'));
   });
 
   // -- Main style tasks
 
   gulp.task('style', ['clean', 'sass'], () => {
-    gulp.watch('./src/scss/**/*.scss', ['sass']);
+    gulp.watch(config.scss, ['sass']);
 
     return gutil.log('Task for serving stylesheets in developer mode.');
   });

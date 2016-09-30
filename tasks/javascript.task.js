@@ -6,32 +6,33 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const gutil = require('gulp-util');
+const config = require('./config');
 
 module.exports = gulp => {
 
   // -- Unit script tasks
 
   gulp.task('build-javascript', () => {
-    return gulp.src('./src/**/*.js')
+    return gulp.src(config.es)
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
-      .pipe(gulp.dest('./dist/'));
+      .pipe(gulp.dest(config.dist+'/js/'));
   });
 
   gulp.task('build-javascript:prod', () => {
-    return gulp.src('./src/js/**/*.js')
+    return gulp.src(config.es)
       .pipe(babel())
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
-      .pipe(gulp.dest('./dist/js/'));
+      .pipe(gulp.dest(config.dist+'/js/'));
   });
 
   // -- Main script tasks
   
   gulp.task('javascript', ['clean', 'build-javascript'], () => {
-    gulp.watch('./src/**/*.js', ['build-javascript']);
+    gulp.watch(config.es, ['build-javascript']);
 
     return gutil.log('Task for serving scripts in developer mode.');
   });

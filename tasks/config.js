@@ -1,13 +1,10 @@
 'use strict';
 
-module.exports = () => {
-  return {
-    css: {
-      scss: './src/scss/**/*.scss',
-      scssDir: './src/scss',
-      css: './.tmp/css/**/*.css',
-      cssDir: './.tmp/css',
-      dist: './dist',
-    },
-  };
+module.exports = { 
+  scss: './src/**/*.scss',
+  css: './dist/css',
+  es: './src/js/**/*.js',
+  js: './dist/js',
+  html: './src/**/*.html',
+  dist: './dist',
 };

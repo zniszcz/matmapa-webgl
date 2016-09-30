@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 
-plugins.loadSubtasks('tasks/**/*.js');
+plugins.loadSubtasks('tasks/**/*.task.js');
 
 // Main tasks
 gulp.task('default', ['clean', 'style', 'javascript', 'html']);
