@@ -8,6 +8,7 @@ const cssnano = require('cssnano');
 const rename = require('gulp-rename');
 const gutil = require('gulp-util');
 const config = require('./config');
+const glob = require('gulp-sass-glob');
 
 module.exports = gulp => {
 
@@ -15,13 +16,16 @@ module.exports = gulp => {
 
   gulp.task('sass', () => {
     return gulp.src(config.scss)
+      .pipe(glob())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
-      .pipe(gulp.dest(config.dist+'/css/app.css'));
+      .pipe(rename('app.css'))
+      .pipe(gulp.dest(config.dist+'/css'));
   });
 
   gulp.task('sass:prod', () => {
     return gulp.src(config.scss)
+      .pipe(glob())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([
         autoprefixer(),

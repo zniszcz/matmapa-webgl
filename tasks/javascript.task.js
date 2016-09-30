@@ -17,6 +17,7 @@ module.exports = gulp => {
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
+      .pipe(concat('app.js'))
       .pipe(gulp.dest(config.dist+'/js/'));
   });
 

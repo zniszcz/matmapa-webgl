@@ -11,13 +11,13 @@ module.exports = gulp => {
 
   gulp.task('inject-html', () => {
     return gulp.src(config.html)
-      .pipe(inject(gulp.src([config.dist+'/css/*.css', config.dist+'/js/*.js'], {read: false})))
+      .pipe(inject(gulp.src([config.dist+'/css/*.css', config.dist+'/js/*.js']), { ignorePath: 'dist/'}))
       .pipe(gulp.dest(config.dist));
   });
 
   gulp.task('inject-html:prod', () => {
     return gulp.src(config.html)
-      .pipe(inject(gulp.src([config.dist+'/css/*.min.css', config.dist+'/js/*.min.js'], {read: false})))
+      .pipe(inject(gulp.src([config.dist+'/css/*.min.css', config.dist+'/js/*.min.js']), { ignorePath: '/dist/'}))
       .pipe(gulp.dest(config.dist));
   });
 
