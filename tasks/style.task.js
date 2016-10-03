@@ -10,6 +10,7 @@ const gutil = require('gulp-util');
 const config = require('./config');
 const glob = require('gulp-sass-glob');
 const browsersync = require('./browsersync.task').browsersync;
+const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = gulp => {
 
@@ -18,9 +19,11 @@ module.exports = gulp => {
   gulp.task('sass', () => {
     return gulp.src(config.scss)
       .pipe(glob())
+      .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
       .pipe(rename('app.css'))
+      .pipe(sourcemaps.write())
       .pipe(gulp.dest(config.dist+'/css'))
       .pipe(browsersync.stream());
 

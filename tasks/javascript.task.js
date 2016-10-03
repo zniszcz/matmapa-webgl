@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 const gutil = require('gulp-util');
 const config = require('./config');
 const browsersync = require('./browsersync.task').browsersync;
+const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = gulp => {
 
@@ -15,10 +16,12 @@ module.exports = gulp => {
 
   gulp.task('build-javascript', () => {
     return gulp.src(config.es)
+      .pipe(sourcemaps.init())
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
       .pipe(concat('app.js'))
+      .pipe(sourcemaps.write())
       .pipe(gulp.dest(config.dist+'/js/'))
       .pipe(browsersync.stream());
   });
