@@ -37,6 +37,5 @@
     "run-sequence": "^1.2.2"
   },
   "dependencies": {
-    "gulp": "^3.9.1"
   }
 }
