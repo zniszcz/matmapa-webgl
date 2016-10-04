@@ -35,7 +35,5 @@
     "gulp-useref": "^3.1.2",
     "gulp-util": "^3.0.7",
     "run-sequence": "^1.2.2"
-  },
-  "dependencies": {
   }
 }
