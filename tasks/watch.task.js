@@ -5,8 +5,8 @@ const config = require('./config');
 module.exports = gulp => {
   gulp.task('watch', () => {
     
-    gulp.watch(config.scss, cb => { runSequence('style', 'browser-sync-reload');});
-    gulp.watch(config.html, cb => { runSequence('html', 'browser-sync-reload');});
-    gulp.watch(config.es, cb => { runSequence('javascript', 'browser-sync-reload');});
+    gulp.watch(config.scss, () => { runSequence('style', 'browser-sync-stream');});
+    gulp.watch(config.html, () => { runSequence('html', 'browser-sync-reload');});
+    gulp.watch(config.es, () => { runSequence('javascript', 'browser-sync-reload');});
   });
 }

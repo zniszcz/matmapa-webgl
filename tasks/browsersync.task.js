@@ -1,7 +1,6 @@
 'use strict';
 
 const browsersync = require('browser-sync').create();
-const config = require('./config');
 
 module.exports = gulp => {
 
@@ -13,8 +12,11 @@ module.exports = gulp => {
     });
 
     gulp.task('browser-sync-reload', () => { 
-      browsersync.reload();
+      return browsersync.reload();
     });
 
+    gulp.task('browser-sync-stream', () => {
+      return browsersync.stream();
+    });
   });
 };

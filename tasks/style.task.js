@@ -42,8 +42,6 @@ module.exports = gulp => {
   // -- Main style tasks
 
   gulp.task('style', ['sass'], () => {
-//    gulp.watch(config.scss, ['sass']);
-
     return gutil.log('Task for serving stylesheets in developer mode.');
   });
 
