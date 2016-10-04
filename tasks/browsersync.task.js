@@ -1,6 +1,7 @@
 'use strict';
 
 const browsersync = require('browser-sync').create();
+const config = require('./config');
 
 module.exports = gulp => {
 
@@ -10,6 +11,11 @@ module.exports = gulp => {
         baseDir: "./dist",
       }
     });
+
+    gulp.watch(config.scss, ['style', browsersync.reload]);
+    gulp.watch(config.es, ['html', browsersync.reload]);
+    gulp.watch(config.html, ['javascript', browsersync.reload]);
+
   });
 };
 

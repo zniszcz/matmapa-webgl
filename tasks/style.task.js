@@ -9,7 +9,6 @@ const rename = require('gulp-rename');
 const gutil = require('gulp-util');
 const config = require('./config');
 const glob = require('gulp-sass-glob');
-const browsersync = require('./browsersync.task').browsersync;
 const sourcemaps = require('gulp-sourcemaps');
 
 module.exports = gulp => {
@@ -24,9 +23,7 @@ module.exports = gulp => {
       .pipe(postcss([autoprefixer()]))
       .pipe(rename('app.css'))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest(config.dist+'/css'))
-      .pipe(browsersync.stream());
-
+      .pipe(gulp.dest(config.dist+'/css'));
   });
 
   gulp.task('sass:prod', () => {

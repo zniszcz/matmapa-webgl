@@ -1,10 +1,8 @@
 'use strict';
 
-// const useref = require('gulp-useref');
 const inject = require('gulp-inject');
 const gutil = require('gulp-util');
 const config = require('./config');
-const browsersync = require('./browsersync.task').browsersync;
 
 module.exports = gulp => {
 
@@ -13,8 +11,7 @@ module.exports = gulp => {
   gulp.task('inject-html', () => {
     return gulp.src(config.html)
       .pipe(inject(gulp.src([config.dist+'/css/*.css', config.dist+'/js/*.js']), { ignorePath: 'dist/'}))
-      .pipe(gulp.dest(config.dist))
-      .pipe(browsersync.stream());
+      .pipe(gulp.dest(config.dist));
   });
 
   gulp.task('inject-html:prod', () => {
