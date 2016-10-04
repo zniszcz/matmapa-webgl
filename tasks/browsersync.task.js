@@ -12,11 +12,9 @@ module.exports = gulp => {
       }
     });
 
-    gulp.watch(config.scss, ['style', browsersync.reload]);
-    gulp.watch(config.es, ['html', browsersync.reload]);
-    gulp.watch(config.html, ['javascript', browsersync.reload]);
+    gulp.task('browser-sync-reload', () => { 
+      browsersync.reload();
+    });
 
   });
 };
-
-module.exports.browsersync = browsersync; 

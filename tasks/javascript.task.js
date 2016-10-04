@@ -36,7 +36,7 @@ module.exports = gulp => {
   // -- Main script tasks
   
   gulp.task('javascript', ['build-javascript'], () => {
-    gulp.watch(config.es, ['build-javascript']);
+//    gulp.watch(config.es, ['build-javascript']);
 
     return gutil.log('Task for serving scripts in developer mode.');
   });
