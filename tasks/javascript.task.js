@@ -21,7 +21,7 @@ module.exports = gulp => {
       .pipe(babel())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest(config.dist+'/js/'));
+      .pipe(gulp.dest(config.dist + '/js/'));
   });
 
   gulp.task('build-javascript:prod', () => {
@@ -30,7 +30,7 @@ module.exports = gulp => {
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
-      .pipe(gulp.dest(config.dist+'/js/'));
+      .pipe(gulp.dest(config.dist + '/js/'));
   });
 
   // -- Main script tasks
