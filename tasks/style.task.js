@@ -17,7 +17,7 @@ module.exports = gulp => {
   // -- Unit style tasks
 
   gulp.task('sass', () => {
-    return gulp.src(config.scss)
+    return gulp.src(config.scssEntryPoint)
       .pipe(glob())
       .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
