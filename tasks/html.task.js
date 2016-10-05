@@ -27,8 +27,6 @@ module.exports = gulp => {
 
   gulp.task('html', ['javascript', 'style', 'inject-assets'], () => {
     return gutil.log('Task for serving templates in developer mode');
-
- //   return gulp.watch(config.html, ['inject-assets']);
   });
 
   gulp.task('html:prod', ['javascript:prod', 'style:prod','inject-assets:prod'], () => {
