@@ -29,7 +29,7 @@ module.exports = gulp => {
   // -- Main html tasks
 
   // Task for serving templates in developer mode.
-  gulp.task('html', ['javascript', 'style', 'inject-assets']);
+  gulp.task('html', ['inject-assets']);
 
   // Task for building templates in production mode.
   gulp.task('html:prod', ['javascript:prod', 'style:prod','inject-assets:prod']);
