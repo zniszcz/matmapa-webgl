@@ -16,18 +16,18 @@ module.exports = gulp => {
   // -- Unit style tasks
 
   gulp.task('sass', () => {
-    return gulp.src(config.scssEntryPoint)
+    return gulp.src(config.entryPoint.scss)
       .pipe(glob())
       .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([autoprefixer()]))
       .pipe(rename('app.css'))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest(config.dist+'/css'));
+      .pipe(gulp.dest(config.path.css));
   });
 
   gulp.task('sass:prod', () => {
-    return gulp.src(config.scss)
+    return gulp.src(config.glob.scss)
       .pipe(glob())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([
@@ -36,7 +36,7 @@ module.exports = gulp => {
       ]))
       .pipe(rename('app.min.css'))
       .pipe(rev())
-      .pipe(gulp.dest(config.dist+'/css'));
+      .pipe(gulp.dest(config.path.css));
   });
 
   // -- Main style tasks

@@ -1,11 +1,17 @@
 'use strict';
 
 module.exports = { 
-  scss: './src/**/*.scss',
-  scssEntryPoint: './src/index.scss',
-  css: './dist/css',
-  es: './src/**/*.js',
-  js: './dist/js',
-  html: './src/**/*.html',
-  dist: './dist',
+  glob: {
+    scss:  './src/**/*.scss',
+    js: './src/**/*.js',
+    html: './src/**/*.html',
+  },
+  entryPoint: {
+    scss: './src/index.scss'
+  }
+  path: {
+    css: './dist/css',
+    js: './dist/js',
+    dist: './dist',
+  },
 };

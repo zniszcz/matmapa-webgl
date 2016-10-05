@@ -14,23 +14,23 @@ module.exports = gulp => {
   // -- Unit script tasks
 
   gulp.task('build-javascript', () => {
-    return gulp.src(config.es)
+    return gulp.src(config.glob.js)
       .pipe(sourcemaps.init())
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest(`${config.dist}/js/`));
+      .pipe(gulp.dest(`${config.path.js}/`));
   });
 
   gulp.task('build-javascript:prod', () => {
-    return gulp.src(config.es)
+    return gulp.src(config.glob.js)
       .pipe(babel())
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
-      .pipe(gulp.dest(`${config.dist}/js/`));
+      .pipe(gulp.dest(`${config.path.js}/`));
   });
 
   // -- Main script tasks
