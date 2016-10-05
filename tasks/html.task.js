@@ -20,8 +20,8 @@ module.exports = gulp => {
   gulp.task('inject-assets:prod', () => {
     return gulp.src(config.glob.html)
       .pipe(inject(gulp.src([
-          `${config.dist}/css/*.min.css`, 
-          `${config.dist}/js/*.min.js`,
+          `${config.path.dist}/css/*.min.css`, 
+          `${config.path.dist}/js/*.min.js`,
       ]), {ignorePath: '/dist/'}))
       .pipe(gulp.dest(config.path.dist));
   });
