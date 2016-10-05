@@ -10,7 +10,10 @@ module.exports = gulp => {
 
   gulp.task('inject-assets', () => {
     return gulp.src(config.html)
-      .pipe(inject(gulp.src([config.dist+'/css/*.css', config.dist+'/js/*.js']), { ignorePath: 'dist/'}))
+      .pipe(inject(gulp.src([
+        config.dist+'/css/*.css', 
+        config.dist+'/js/*.js'
+      ]), { ignorePath: 'dist/'}))
       .pipe(gulp.dest(config.dist));
   });
 
