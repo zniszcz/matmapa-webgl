@@ -17,13 +17,10 @@ module.exports = gulp => {
       return browsersync.reload();
     });
 
-    /*
-     * -- Temporary not used; unnecessary to realise side quest from Rafał ;)
-     * 
-     * gulp.task('browser-sync-stream', () => {
-     *   return browsersync.stream();
-     * });
-     *
-     */
+    // -- Temporary not used; unnecessary to realise side quest from Rafał ;)
+    //
+    // gulp.task('browser-sync-stream', () => {
+    //   return browsersync.stream();
+    // });
   });
 };

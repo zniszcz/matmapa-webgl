@@ -22,7 +22,7 @@ module.exports = gulp => {
       .pipe(inject(gulp.src([
           `${config.dist}/css/*.min.css`, 
           `${config.dist}/js/*.min.js`,
-      ]), { ignorePath: '/dist/'}))
+      ]), {ignorePath: '/dist/'}))
       .pipe(gulp.dest(config.path.dist));
   });
 
