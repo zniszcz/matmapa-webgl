@@ -27,7 +27,7 @@ module.exports = gulp => {
   });
 
   gulp.task('sass:prod', () => {
-    return gulp.src(config.glob.scss)
+    return gulp.src(config.entryPoint.scss)
       .pipe(glob())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss([
