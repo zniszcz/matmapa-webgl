@@ -6,7 +6,6 @@ const config = require('./config');
 
 module.exports = gulp => {
 
-
   // Task for cleaning dist directory.
   gulp.task('clean', () => {
     return gulp
