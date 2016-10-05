@@ -19,17 +19,18 @@ module.exports = gulp => {
 
   gulp.task('inject-assets:prod', () => {
     return gulp.src(config.html)
-      .pipe(inject(gulp.src([config.dist+'/css/*.min.css', config.dist+'/js/*.min.js']), { ignorePath: '/dist/'}))
+      .pipe(inject(gulp.src([
+          `${config.dist}/css/*.min.css`, 
+          `${config.dist}/js/*.min.js`,
+      ]), { ignorePath: '/dist/'}))
       .pipe(gulp.dest(config.dist));
   });
 
   // -- Main html tasks
 
-  gulp.task('html', ['javascript', 'style', 'inject-assets'], () => {
-    return gutil.log('Task for serving templates in developer mode');
-  });
+  // Task for serving templates in developer mode.
+  gulp.task('html', ['javascript', 'style', 'inject-assets']);
 
-  gulp.task('html:prod', ['javascript:prod', 'style:prod','inject-assets:prod'], () => {
-    gutil.log('Task for building templates in production mode.');
-  });
+  // Task for building templates in production mode.
+  gulp.task('html:prod', ['javascript:prod', 'style:prod','inject-assets:prod']);
 };

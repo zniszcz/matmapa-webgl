@@ -21,7 +21,7 @@ module.exports = gulp => {
       .pipe(babel())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write())
-      .pipe(gulp.dest(config.dist + '/js/'));
+      .pipe(gulp.dest(`${config.dist}/js/`));
   });
 
   gulp.task('build-javascript:prod', () => {
@@ -30,18 +30,14 @@ module.exports = gulp => {
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())
-      .pipe(gulp.dest(config.dist + '/js/'));
+      .pipe(gulp.dest(`${config.dist}/js/`));
   });
 
   // -- Main script tasks
   
-  gulp.task('javascript', ['build-javascript'], () => {
-//    gulp.watch(config.es, ['build-javascript']);
+  // Task for serving scripts in developer mode.
+  gulp.task('javascript', ['build-javascript']);
 
-    return gutil.log('Task for serving scripts in developer mode.');
-  });
-
-  gulp.task('javascript:prod', ['build-javascript:prod'], () => {
-    return gutil.log('Task for building scripts in production mode.');
-  });
+  // Task for building scripts in production mode.
+  gulp.task('javascript:prod', ['build-javascript:prod']);
 };

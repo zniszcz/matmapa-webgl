@@ -8,7 +8,8 @@ module.exports = gulp => {
     browsersync.init({
       server: {
         baseDir: "./dist",
-      }
+      },
+      stream: true,
     });
 
     gulp.task('browser-sync-reload', () => { 

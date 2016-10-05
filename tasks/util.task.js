@@ -6,10 +6,11 @@ const config = require('./config');
 
 module.exports = gulp => {
 
+
+  // Task for cleaning dist directory.
   gulp.task('clean', () => {
-    gutil.log('Task for cleaning dist directory.');
     return gulp
-      .src(config.dist+'/*', {read: false, force: true})
+      .src(config.dist+'/*', {read: false})
       .pipe(clean());
   });
 
