@@ -8,7 +8,7 @@ module.exports = gulp => {
   // Task for cleaning dist directory.
   gulp.task('clean', () => {
     return gulp
-      .src(config.dist+'/*', {read: false})
+      .src(config.dist+'*', {read: false})
       .pipe(clean());
   });
 

@@ -9,21 +9,21 @@ module.exports = gulp => {
   // -- Unit html tasks
 
   gulp.task('inject-assets', () => {
-    return gulp.src(config.html)
+    return gulp.src(config.glob.html)
       .pipe(inject(gulp.src([
         `${config.path.css}/*.css`, 
         `${config.path.js}/*.js`,
       ]), { ignorePath: 'dist/'}))
-      .pipe(gulp.dest(config.dist));
+      .pipe(gulp.dest(config.path.dist));
   });
 
   gulp.task('inject-assets:prod', () => {
-    return gulp.src(config.html)
+    return gulp.src(config.glob.html)
       .pipe(inject(gulp.src([
           `${config.dist}/css/*.min.css`, 
           `${config.dist}/js/*.min.js`,
       ]), { ignorePath: '/dist/'}))
-      .pipe(gulp.dest(config.dist));
+      .pipe(gulp.dest(config.path.dist));
   });
 
   // -- Main html tasks

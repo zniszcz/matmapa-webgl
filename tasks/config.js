@@ -8,10 +8,10 @@ module.exports = {
   },
   entryPoint: {
     scss: './src/index.scss'
-  }
+  },
   path: {
-    css: './dist/css',
-    js: './dist/js',
-    dist: './dist',
+    css: './dist/css/',
+    js: './dist/js/',
+    dist: './dist/',
   },
 };
