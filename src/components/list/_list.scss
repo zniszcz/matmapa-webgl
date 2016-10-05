@@ -12,38 +12,38 @@
             display: table;
             clear: both;
         }
-    }
-    .search_box__button,
-    .search_box__input {
-        box-sizing: border-box;
-        float: left;
-        padding: 10px;
-        border: none;
-    }
-    .search_box__button {
-        width: 80px;
-        background: #008b8c;
-        color: #fff;
-        text-transform: uppercase;
-        font-weight: 800;
-    }
-    .search_box__input {
-        width: calc(100% - 80px);
-    }
-
-}
-
-.user_list__list {
-    padding: 0;
-    margin: 25px 0 0;
-    list-style: none;
     
-    li {
-        box-sizing: border-box;
-        padding: 10px 15px;
-        background: #00233e;
-        font-weight: 800;
-        color: #eee;
-        margin: 3px 0; 
+        &__button,
+        &__input {
+            box-sizing: border-box;
+            float: left;
+            padding: 10px;
+            border: none;
+        }
+        &__button {
+            width: 80px;
+            background: #008b8c;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        &__input {
+            width: calc(100% - 80px);
+        }
+    }
+
+    &__list {
+        padding: 0;
+        margin: 25px 0 0;
+        list-style: none;
+    
+        li {
+            box-sizing: border-box;
+            padding: 10px 15px;
+            background: #00233e;
+            font-weight: 800;
+            color: #eee;
+            margin: 3px 0; 
+        }
     }
 }
