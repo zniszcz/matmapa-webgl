@@ -47,13 +47,22 @@
             font-weight: 800;
             color: #eee;
             margin: 3px 0; 
+            position: relative;
+            overflow: hidden;
 
             &:after {
                 transition: .3s all;
-                content: "\2716";
-                float: right;
-                opacity: 0;
                 font-weight: 300;
+                content: "\2716";
+                // -- Too long verb fix
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 10px;
+                box-sizing: border-box;
+                background: #00233e;
+                display: block;
+                opacity: 0;
             }
             &:hover:after {
                 opacity: 1;
