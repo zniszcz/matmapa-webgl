@@ -47,6 +47,17 @@
             font-weight: 800;
             color: #eee;
             margin: 3px 0; 
+
+            &:after {
+                transition: .3s all;
+                content: "\2716";
+                float: right;
+                opacity: 0;
+                font-weight: 300;
+            }
+            &:hover:after {
+                opacity: 1;
+            }
         }
     }
 }

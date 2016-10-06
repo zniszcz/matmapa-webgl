@@ -11,11 +11,11 @@
     // TODO: dynamicly get proper elements
 
     const form = list.children.item(0);
+    const input = form.children.item(0);
     const ul = list.children.item(1);
 
     form.addEventListener('submit', event => {
       event.preventDefault();
-      const input = form.children.item(0);
       const newElement = document.createElement('li');
 
       newElement.innerHTML = input.value.replace(/(<([^>]+)>)/ig, '');
@@ -24,6 +24,12 @@
       } else {
         ul.appendChild(newElement);
         input.value = '';
+      }
+    });
+
+    ul.addEventListener('click', event => {
+      if (event.target.tagName.toLowerCase() === 'li') {
+        ul.removeChild(event.target);
       }
     });
   });
