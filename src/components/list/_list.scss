@@ -3,17 +3,16 @@
     background: #a9a9a9;
     box-sizing: border-box;
     padding: 10px;
+    margin: 10px 0;
 
     .search_box {
         width: 100%;
-        margin-bottom: 15px;
 
         &:after {
             content: "";
             display: table;
             clear: both;
         }
-    
         &__button,
         &__input {
             box-sizing: border-box;
@@ -35,9 +34,12 @@
 
     &__list {
         padding: 0;
-        margin: 0;
+        margin: 15px 0 0;
         list-style: none;
-    
+
+        &:empty {
+            margin-top: 0;
+        }    
         li {
             box-sizing: border-box;
             padding: 10px 15px;

@@ -18,9 +18,13 @@
       const input = form.children.item(0);
       const newElement = document.createElement('li');
 
-      newElement.innerHTML = input.value;
-      ul.appendChild(newElement);
-      input.value = '';
+      newElement.innerHTML = input.value.replace(/(<([^>]+)>)/ig, '');
+      if (!newElement.innerHTML) {
+        throw new Error('You are trying to add empty or unsafe record.');
+      } else {
+        ul.appendChild(newElement);
+        input.value = '';
+      }
     });
   });
 })();
