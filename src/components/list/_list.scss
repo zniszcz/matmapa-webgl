@@ -1,6 +1,6 @@
 .user_list {
     max-width: 30%;
-    background: #a9a9a9;
+    background: $color-grey;
     box-sizing: border-box;
     padding: 10px;
     margin: 10px 0;
@@ -8,7 +8,7 @@
     .search_box {
         width: 100%;
 
-        &:after {
+        &::after {
             content: "";
             display: table;
             clear: both;
@@ -22,8 +22,8 @@
         }
         &__button {
             width: 80px;
-            background: #008b8c;
-            color: #fff;
+            background: $color-lighter-blue; 
+            color: $color-font-light;
             text-transform: uppercase;
             font-weight: 800;
         }
@@ -43,14 +43,14 @@
         li {
             box-sizing: border-box;
             padding: 10px 15px;
-            background: #00233e;
+            background: $color-blue;
             font-weight: 800;
-            color: #eee;
+            color: $color-font-light;
             margin: 3px 0; 
             position: relative;
             overflow: hidden;
 
-            &:after {
+            &::after {
                 transition: .3s all;
                 font-weight: 300;
                 content: "\2716";
@@ -60,7 +60,7 @@
                 top: 0;
                 padding: 10px;
                 box-sizing: border-box;
-                background: #00233e;
+                background: $color-blue;
                 display: block;
                 opacity: 0;
             }
