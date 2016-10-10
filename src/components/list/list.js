@@ -7,12 +7,9 @@
   const userList = document.querySelectorAll('.user_list');
 
   userList.forEach(function (list) {
-    // Assume that order of elements is constant
-    // TODO: dynamicly get proper elements
-
-    const form = list.children.item(0);
-    const input = form.children.item(0);
-    const ul = list.children.item(1);
+    const form = list.querySelectorAll('form.search_box')[0];
+    const input = form.querySelectorAll('input.search_box__input')[0];
+    const ul = list.querySelectorAll('ul.user_list__list')[0];
 
     form.addEventListener('submit', event => {
       event.preventDefault();
