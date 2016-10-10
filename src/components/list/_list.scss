@@ -40,7 +40,7 @@
             box-sizing: border-box;
             padding: 10px 15px;
             background: $color-blue;
-            font-weight: 800;
+            font-weight: $font-bold;
             color: $color-font-light;
             margin: 3px 0; 
             position: relative;
@@ -48,7 +48,7 @@
 
             &::after {
                 transition: .3s all;
-                font-weight: 300;
+                font-weight: $font-weight-normal;
                 // Special char: http://www.fileformat.info/info/unicode/char/2716/index.htm
                 content: "\2716";
                 // -- Too long verb fix
