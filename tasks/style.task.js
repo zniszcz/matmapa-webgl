@@ -42,9 +42,20 @@ module.exports = gulp => {
   // -- Main style tasks
 
   // Task for serving stylesheets in developer mode.
-  gulp.task('style', ['sass']);
+  gulp.task(
+    'style', 
+    [
+      'sass',
+    ]
+  );
+
 
   // Task for building stylesheets in production mode.
-  gulp.task('style:prod', ['sass:prod']);
+  gulp.task(
+    'style:prod', 
+    [
+      'sass:prod',
+    ]
+  );
 
 };
