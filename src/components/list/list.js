@@ -1,8 +1,5 @@
-/* global document */
-
-'use strict';
-
 (function () {
+  'use strict';
   // Works for multiple occurings
   const userList = document.querySelectorAll('.user_list');
 
