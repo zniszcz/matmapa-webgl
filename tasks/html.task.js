@@ -3,6 +3,7 @@
 const inject = require('gulp-inject');
 const gutil = require('gulp-util');
 const config = require('./config');
+const strip = require('gulp-strip-comments');
 
 module.exports = gulp => {
 
@@ -23,6 +24,7 @@ module.exports = gulp => {
           `${config.path.dist}/css/*.min.css`, 
           `${config.path.dist}/js/*.min.js`,
       ]), {ignorePath: '/dist/'}))
+      .pipe(strip())
       .pipe(gulp.dest(config.path.dist));
   });
 
