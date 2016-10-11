@@ -1,0 +1,24 @@
+.search_box {
+    padding: 5px;
+    box-sizing: border-box;
+    background: $color-grey;
+    width: 100%;
+    @include clearfix;
+    &__button,
+    &__input {
+        box-sizing: border-box;
+        float: left;
+        padding: 10px;
+        border: none;
+    }
+    &__button {
+        width: 80px;
+        background: $color-lighter-blue; 
+        color: $color-font-light;
+        text-transform: uppercase;
+        font-weight: $font-bold;
+    }
+    &__input {
+        width: calc(100% - 80px);
+    }
+}
