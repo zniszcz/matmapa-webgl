@@ -10,12 +10,14 @@
 
     form.addEventListener('submit', event => {
       event.preventDefault();
-      const newElement = document.createElement('li');
+      const newUser = input.value.replace(/(<([^>]+)>)/ig, '');
 
-      newElement.innerHTML = input.value.replace(/(<([^>]+)>)/ig, '');
-      if (!newElement.innerHTML) {
+      if (!newUser) {
         throw new Error('You are trying to add empty or unsafe record.');
       }
+
+      const newElement = document.createElement('li');
+      newElement.innerHTML = newUser;
 
       list.appendChild(newElement);
       input.value = '';
