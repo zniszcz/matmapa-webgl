@@ -1,9 +1,7 @@
 (function () {
   'use strict';
   // Works for multiple occurings
-  const userList = document.querySelectorAll('aside.users');
-
-  userList.forEach(function (container) {
+  document.querySelectorAll('aside.users').forEach(container => {
     const form = container.querySelectorAll('form.search_box')[0];
     const input = form.querySelectorAll('input.search_box__input')[0];
     const list = container.querySelectorAll('ul.users__list')[0];
