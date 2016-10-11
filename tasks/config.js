@@ -14,4 +14,10 @@ module.exports = {
     js: './dist/js/',
     dist: './dist/',
   },
+  concatOrder: {
+    js: [
+        './src/**/!(main)*.js',
+        './src/js/main.js'
+    ]
+  },
 };

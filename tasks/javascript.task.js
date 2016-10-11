@@ -14,7 +14,7 @@ module.exports = gulp => {
   // -- Unit script tasks
 
   gulp.task('build-javascript', () => {
-    return gulp.src(config.glob.js)
+    return gulp.src(config.concatOrder.js)
       .pipe(sourcemaps.init())
       .pipe(eslint())
       .pipe(eslint.format())
@@ -25,7 +25,7 @@ module.exports = gulp => {
   });
 
   gulp.task('build-javascript:prod', () => {
-    return gulp.src(config.glob.js)
+    return gulp.src(config.concatOrder.js)
       .pipe(babel())
       .pipe(concat('app.min.js'))
       .pipe(uglify())
