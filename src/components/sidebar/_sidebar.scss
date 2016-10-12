@@ -1,0 +1,9 @@
+.sidebar {
+    max-width: 30%;
+    background: $color-grey;
+    box-sizing: border-box;
+    float: left;
+    padding: 10px;
+    margin: 10px 0;
+    @include clearfix;
+}

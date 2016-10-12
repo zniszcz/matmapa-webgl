@@ -1,9 +1,8 @@
-.search_box {
-    padding: 5px;
+.input {
     box-sizing: border-box;
-    background: $color-grey;
     width: 100%;
     @include clearfix;
+
     &__button,
     &__input {
         box-sizing: border-box;

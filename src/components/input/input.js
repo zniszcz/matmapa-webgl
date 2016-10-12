@@ -13,9 +13,9 @@
       const input = document.createElement('input');
       const button = document.createElement('button');
 
-      form.classList.add('search_box');
-      input.classList.add('search_box__input');
-      button.classList.add('search_box__button');
+      form.classList.add('input');
+      input.classList.add('input__input');
+      button.classList.add('input__button');
 
       button.type = 'submit';
       button.innerHTML = 'Add';

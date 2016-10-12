@@ -5,9 +5,9 @@
     constructor() {
       const list = document.createElement('ul');
 
-      list.classList.add('users__list');
+      list.classList.add('list');
 
-      this.add = value => {
+      this.add = function (value) {
         const li = document.createElement('li');
 
         li.innerHTML = value;
