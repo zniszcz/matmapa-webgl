@@ -3,6 +3,7 @@
   app.ListElement = class ListElement {
     constructor(value = '') {
       const li = document.createElement('li');
+      li.classList.add('listElement');
       li.innerHTML = value;
       li.addEventListener('click', event => {
         if (event.target.tagName.toLowerCase() === 'li') {
