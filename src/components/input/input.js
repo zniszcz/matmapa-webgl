@@ -1,37 +1,41 @@
-const defaultConfig = {
-  onSubmit: () => {
-    console.log('There\'s no action appended');
-  },
-};
+(function () {
+  'use strict';
 
-class Input {
-  constructor(config = defaultConfig) {
-    const form = document.createElement('form');
-    const input = document.createElement('input');
-    const button = document.createElement('button');
+  const defaultConfig = {
+    onSubmit: () => {
+      console.log('There\'s no action appended');
+    },
+  };
 
-    form.classList.add('search_box');
-    input.classList.add('search_box__input');
-    button.classList.add('search_box__button');
+  app.Input = class Input {
+    constructor(config = defaultConfig) {
+      const form = document.createElement('form');
+      const input = document.createElement('input');
+      const button = document.createElement('button');
 
-    button.type = 'submit';
-    button.innerHTML = 'Add';
+      form.classList.add('search_box');
+      input.classList.add('search_box__input');
+      button.classList.add('search_box__button');
 
-    form.appendChild(input);
-    form.appendChild(button);
+      button.type = 'submit';
+      button.innerHTML = 'Add';
 
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      const value = input.value.replace(/(<([^>]+)>)/ig, '');
+      form.appendChild(input);
+      form.appendChild(button);
 
-      if (!value) {
-        throw new Error('You are trying to add empty or unsafe record.');
-      }
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        const value = input.value.replace(/(<([^>]+)>)/ig, '');
 
-      config.onSubmit(value);
-      input.value = '';
-    });
+        if (!value) {
+          throw new Error('You are trying to add empty or unsafe record.');
+        }
 
-    this.node = form;
-  }
-}
+        config.onSubmit(value);
+        input.value = '';
+      });
+
+      this.node = form;
+    }
+  };
+})();

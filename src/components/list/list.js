@@ -1,22 +1,26 @@
-class List {
-  constructor() {
-    const list = document.createElement('ul');
+(function () {
+  'use strict';
 
-    list.classList.add('users__list');
+  app.List = class List {
+    constructor() {
+      const list = document.createElement('ul');
 
-    this.add = value => {
-      const li = document.createElement('li');
+      list.classList.add('users__list');
 
-      li.innerHTML = value;
-      li.addEventListener('click', event => {
-        if (event.target.tagName.toLowerCase() === 'li') {
-          list.removeChild(event.target);
-        }
-      });
+      this.add = value => {
+        const li = document.createElement('li');
 
-      list.appendChild(li);
-    };
+        li.innerHTML = value;
+        li.addEventListener('click', event => {
+          if (event.target.tagName.toLowerCase() === 'li') {
+            list.removeChild(event.target);
+          }
+        });
 
-    this.node = list;
-  }
-}
+        list.appendChild(li);
+      };
+
+      this.node = list;
+    }
+  };
+})();
