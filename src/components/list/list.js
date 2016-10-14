@@ -8,7 +8,7 @@
       list.classList.add('list');
 
       this.add = function (value) {
-        const li = new app.ListElement(value);
+        const li = new app.ListElement({value});
         list.appendChild(li.node);
       };
 
