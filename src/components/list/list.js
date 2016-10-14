@@ -3,16 +3,16 @@
 
   app.List = class List {
     constructor() {
-      const list = document.createElement('ul');
-
-      list.classList.add('list');
-
-      this.add = function (value) {
-        const li = new app.ListElement({value});
-        list.appendChild(li.node);
-      };
-
-      this.node = list;
+      this.el = document.createElement('ul');
+      this.el.classList.add('list');
+    }
+    get node() {
+      return this.el;
+    }
+    add(value) {
+      const li = new app.ListElement({value});
+      console.dir(this);
+      return this.el.appendChild(li.node);
     }
   };
 })();

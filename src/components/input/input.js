@@ -31,7 +31,7 @@
           throw new Error('You are trying to add empty or unsafe record.');
         }
 
-        config.onSubmit(value);
+        config.onSubmit({value});
         input.value = '';
       });
 

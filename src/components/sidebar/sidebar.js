@@ -3,14 +3,11 @@
 
   app.Sidebar = class Sidebar {
     constructor() {
-      const sidebar = document.createElement('aside');
-
-      sidebar.classList.add('sidebar');
-
-      this.add = function (node) {
-        sidebar.appendChild(node);
-      };
-      this.node = sidebar;
+      this.node = document.createElement('aside');
+      this.node.classList.add('sidebar');
+    }
+    add(node) {
+      return this.node.appendChild(node);
     }
   };
 })();
