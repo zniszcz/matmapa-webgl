@@ -10,8 +10,7 @@
       return this.el;
     }
     add(value) {
-      const li = new app.ListElement({value});
-      console.dir(this);
+      const li = new app.ListElement(value);
       return this.el.appendChild(li.node);
     }
   };
