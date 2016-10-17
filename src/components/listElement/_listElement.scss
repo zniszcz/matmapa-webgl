@@ -26,7 +26,8 @@
             opacity: 0;
         }
         &:hover::after,
-        &:focus::after {
+        &:focus::after,
+        body.touch &::after {
             opacity: 1;
         }
     }
