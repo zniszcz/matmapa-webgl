@@ -1,3 +1,5 @@
+$input_button-width: 80px;
+
 .input {
     box-sizing: border-box;
     width: 100%;
@@ -12,13 +14,13 @@
         border: none;
     }
     &__button {
-        width: 80px;
-        background: $color-lighter-blue; 
+        width: $input_button-width;
+        background: $color-lighter-blue;
         color: $color-font-light;
         text-transform: uppercase;
         font-weight: $font-bold;
     }
     &__input {
-        width: calc(100% - 80px);
+        width: calc(100% - #{$input_button-width});
     }
 }
