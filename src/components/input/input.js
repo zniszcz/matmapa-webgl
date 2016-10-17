@@ -3,7 +3,7 @@
 
   const defaultConfig = {
     onSubmit: () => {
-      console.log('There\'s no action appended');
+      console.debug('There\'s no action appended');
     },
   };
 
@@ -39,9 +39,6 @@
     }
     get node() {
       return this.el;
-    }
-    get rootNode() {
-      return this.el.parentElement;
     }
   };
 })();

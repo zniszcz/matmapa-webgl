@@ -12,8 +12,5 @@
     get node() {
       return this.el;
     }
-    get rootNode() {
-      return this.el.parentNode;
-    }
   };
 })();
