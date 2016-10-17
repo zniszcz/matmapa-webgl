@@ -35,7 +35,13 @@
         input.value = '';
       });
 
-      this.node = form;
+      this.el = form;
+    }
+    get node() {
+      return this.el;
+    }
+    get rootNode() {
+      return this.el.parentElement;
     }
   };
 })();

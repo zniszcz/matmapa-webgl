@@ -9,6 +9,9 @@
     get node() {
       return this.el;
     }
+    get rootNode() {
+      return this.el.parentNode;
+    }
     add(value) {
       const li = new app.ListElement(value);
       return this.el.appendChild(li.node);

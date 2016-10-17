@@ -15,5 +15,6 @@
 
     sidebar.add(input.node);
     sidebar.add(list.node);
+
   };
 })();

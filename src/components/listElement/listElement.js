@@ -5,13 +5,19 @@
   };
   app.ListElement = class ListElement {
     constructor(options = defaultConfig) {
-      this.node = document.createElement('li');
-      this.node.innerHTML = options.value;
+      this.el = document.createElement('li');
+      this.el.innerHTML = options.value;
 
-      this.node.classList.add('listElement');
-      this.node.addEventListener('click', event => {
-        this.node.parentNode.removeChild(event.target);
+      this.el.classList.add('listElement');
+      this.el.addEventListener('click', event => {
+        this.el.parentNode.removeChild(event.target);
       });
+    }
+    get node() {
+      return this.el;
+    }
+    get rootNode() {
+      return this.el.parentNode;
     }
   };
 })();
