@@ -18,17 +18,17 @@
       button.classList.add('input__button');
 
       button.type = 'submit';
-      button.innerHTML = 'Add';
+      button.textContent = 'Add';
 
       form.appendChild(input);
       form.appendChild(button);
 
       form.addEventListener('submit', event => {
         event.preventDefault();
-        const value = input.value.replace(/(<([^>]+)>)/ig, '');
+        const value = input.value;
 
         if (!value) {
-          throw new Error('You are trying to add empty or unsafe record.');
+          throw new Error('You are trying to add empty record.');
         }
 
         config.onSubmit({value});

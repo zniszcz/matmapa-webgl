@@ -5,16 +5,20 @@
 
   window.app = {};
 
-  window.onload = () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const sidebar = new app.Sidebar();
     const list = new app.List();
-    // Arrow function on following line provide changing the 'this' context for Babel
-    const input = new app.Input({onSubmit: val => list.add(val)});
+    // Function on following line provide changing the 'this' context for Babel
+    const input = new app.Input({
+      onSubmit(val) {
+        return list.add(val);
+      },
+    });
 
     document.body.appendChild(sidebar.node);
 
     sidebar.add(input.node);
     sidebar.add(list.node);
 
-  };
+  });
 })();
