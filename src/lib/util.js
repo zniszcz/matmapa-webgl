@@ -1,11 +1,9 @@
 (function () {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', () => checkEventSupport());
-
-  const checkEventSupport = () => {
-    if ('ontouchstart' in document.documentElement) {
-      document.body.classList.add('touch');
-    }
+  app.utils = {
+    checkEventSupport() {
+      return 'ontouchstart' in document.documentElement;
+    },
   };
 })();
