@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = { 
+module.exports = {
   glob: {
     scss:  './src/**/*.scss',
     js: './src/**/*.js',
@@ -13,5 +13,11 @@ module.exports = {
     css: './dist/css/',
     js: './dist/js/',
     dist: './dist/',
+  },
+  concatOrder: {
+    js: [
+        './src/main.js',
+        './src/**/!(main).js',
+    ]
   },
 };

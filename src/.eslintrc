@@ -7,5 +7,8 @@
             2, 
             "function"
         ]
+    },
+    "globals": {
+        "app": true
     }
 }
