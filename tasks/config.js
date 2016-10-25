@@ -16,8 +16,8 @@ module.exports = {
   },
   concatOrder: {
     js: [
-        './src/main.js',
-        './src/**/!(main).js',
+        './src/bootstrap.js',
+        './src/**/!(bootstrap).js',
     ]
   },
 };
