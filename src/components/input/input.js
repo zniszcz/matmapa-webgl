@@ -7,7 +7,9 @@
     },
   };
 
-  app.Input = class Input {
+  app.Input = {};
+
+  app.Input.View = class InputView {
     constructor(config = defaultConfig) {
       const form = document.createElement('form');
       const input = document.createElement('input');

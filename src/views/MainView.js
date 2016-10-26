@@ -5,10 +5,10 @@
 
   app.MainView = class MainView {
     constructor() {
-      const sidebar = new app.Sidebar();
-      const list = new app.List();
+      const sidebar = new app.Sidebar.View();
+      const list = new app.List.View();
       // Function on following line provide changing the 'this' context for Babel
-      const input = new app.Input({
+      const input = new app.Input.View({
         onSubmit(val) {
           return list.add(val);
         },

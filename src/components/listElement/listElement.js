@@ -3,7 +3,10 @@
   const defaultConfig = {
     value: '',
   };
-  app.ListElement = class ListElement {
+
+  app.ListElement = {};
+
+  app.ListElement.View = class ListElementView {
     constructor(options = defaultConfig) {
       this.el = document.createElement('li');
       this.el.textContent = options.value;

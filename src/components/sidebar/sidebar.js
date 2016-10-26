@@ -1,7 +1,9 @@
 (function () {
   'use strict';
 
-  app.Sidebar = class Sidebar {
+  app.Sidebar = {};
+
+  app.Sidebar.View = class SidebarView {
     constructor() {
       this.el = document.createElement('aside');
       this.el.classList.add('sidebar');
