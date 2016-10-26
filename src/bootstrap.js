@@ -2,17 +2,11 @@
   'use strict';
   window.app = {};
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', function () {
 
-    const bootstrap = {
-      mainView: app.MainView,
-      // mainController
-      init() {
-        console.log(this);
-        return new this.mainView();
-      },
+    return {
+      MainView: new app.MainView(),
+      MainController: new app.MainController(),
     };
-
-    bootstrap.init();
   });
 })();
