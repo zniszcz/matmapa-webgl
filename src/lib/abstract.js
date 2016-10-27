@@ -70,6 +70,13 @@
     setRootEl(el) {
       this.rootEl = el;
     }
+    render() {
+      if (this.rootEl) {
+        document.body.appendChild(this.rootEl);
+      } else {
+        throw new Error('This View has no root element.');
+      }
+    }
   };
 
   app.Abstract.Component = class Component extends app.Abstract.View {
