@@ -71,11 +71,7 @@
       this.rootEl = el;
     }
     render() {
-      if (this.rootEl) {
-        document.body.appendChild(this.rootEl);
-      } else {
-        throw new Error('This View has no root element.');
-      }
+      this.setRootEl(document.body);
     }
   };
 
@@ -98,6 +94,8 @@
 
       return result;
     }
+    // // Folowing line provide protection before trying to render component as page view
+    // render() {}
   };
 
   app.Abstract.Controller = class Controller {

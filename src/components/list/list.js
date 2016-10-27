@@ -1,7 +1,9 @@
 (function () {
   'use strict';
+/*
+  app.List = class List {
 
-  app.List = {};
+  };
 
   app.List.Controller = function (model, view) {
     this.listElements = new app.UserModel();
@@ -20,6 +22,14 @@
     add(value) {
       const li = new app.ListElement.View(value);
       return this.el.appendChild(li.node);
+    }
+  };
+*/
+
+  app.List = class List extends app.Abstract.Component {
+    constructor(model, controller) {
+      super(model, controller);
+      this.setRootEl(document.createElement('ul'));
     }
   };
 })();

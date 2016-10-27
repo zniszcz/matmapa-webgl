@@ -7,10 +7,10 @@
     constructor(model, controller) {
       super(model, controller);
 
-      const list = new app.List.View();
+      const list = new app.List();
 
       this.setRootEl(document.body);
-      this.rootEl.appendChild(list);
+      this.rootEl.appendChild(list.rootEl);
 
       if (app.utils.checkEventSupport()) {
         this.rootEl.classList.add('touch');
