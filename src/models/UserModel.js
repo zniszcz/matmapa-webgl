@@ -26,6 +26,17 @@
 
       return result;
     }
+    removeNode(query) {
+      let res;
+
+      if (query) {
+        const elem = this.getNode(query);
+        const index = this.get('name').indexOf(elem);
+        res = this.remove(index);
+      }
+
+      return res;
+    }
     cleanNodes() {
       this.set('name', []);
       return this.get('name');

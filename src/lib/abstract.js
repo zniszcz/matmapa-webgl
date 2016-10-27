@@ -40,6 +40,14 @@
       this.fireEvent('change');
     }
 
+    remove(key) {
+      const res = this.properties[key];
+      if (delete this.properties[key]) {
+        return res;
+      }
+      return false;
+    }
+
     cleanNodes() {
       this.properties = {};
     }

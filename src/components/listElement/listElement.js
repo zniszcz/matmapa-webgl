@@ -7,6 +7,7 @@
       this.setRootEl(document.createElement('li'));
       this.rootEl.textContent = model;
       this.rootEl.classList.add('listElement');
+      this.rootEl.addEventListener('click', model.removeElement);
     }
   };
 
