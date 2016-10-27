@@ -1,10 +1,10 @@
 (function () {
   'use strict';
 
-  app.MainController = class MainController {
-    constructor(model, view) {
-      // const newWelcomeMsg = new app.WelcomeCtrl();
-    
+  app.MainController = class MainController extends app.Abstract.Controller {
+    constructor(model) {
+      super(model);
+      console.log('Hello world!');
     }
   };
 })();
