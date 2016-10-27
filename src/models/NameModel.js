@@ -16,6 +16,7 @@
     setNode(value) {
       const store = this.get('name');
       store.push(value);
+      this.fireEvent('add', value);
 
       return store;
     }

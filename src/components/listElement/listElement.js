@@ -1,12 +1,16 @@
 (function () {
   'use strict';
-  const defaultConfig = {
-    value: '',
+
+  app.ListElement = class ListElement extends app.Abstract.Component {
+    constructor(model) {
+      super(model);
+      this.setRootEl(document.createElement('li'));
+      this.rootEl.textContent = model;
+      this.rootEl.classList.add('listElement');
+    }
   };
 
-  app.ListElement = {};
-
-  app.ListElement.View = class ListElementView {
+  /* app.ListElement.View = class ListElementView {
     constructor(options = defaultConfig) {
       this.el = document.createElement('li');
       this.el.textContent = options.value;
@@ -19,5 +23,5 @@
     get node() {
       return this.el;
     }
-  };
+  };*/
 })();
