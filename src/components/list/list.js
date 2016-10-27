@@ -5,7 +5,7 @@
 
   app.List.Controller = function (model, view) {
     this.listElements = new app.UserModel();
-    
+
     return new app.List.View();
   };
 

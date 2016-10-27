@@ -3,24 +3,14 @@
 
   // Main view - should be treaten like a component; Append third-part components here;
 
-  app.MainView = class MainView {
-    constructor() {
-      const sidebar = new app.Sidebar.View();
-      const list = new app.List.View();
-      // Function on following line provide changing the 'this' context for Babel
-      const input = new app.Input.View({
-        onSubmit(val) {
-          return list.add(val);
-        },
-      });
+  app.MainView = class MainView extends app.Abstract.View {
+    constructor(model, controller) {
+      super(model, controller);
 
-      document.body.appendChild(sidebar.node);
-
-      sidebar.add(input.node);
-      sidebar.add(list.node);
+      this.setRootEl(document.body);
 
       if (app.utils.checkEventSupport()) {
-        document.body.classList.add('touch');
+        this.rootEl.classList.add('touch');
       }
     }
   };

@@ -72,6 +72,27 @@
     }
   };
 
+  app.Abstract.Component = class Component extends app.Abstract.View {
+    constructor(model, controller) {
+      super(model, controller);
+    }
+    addChildNode(node) {
+      this.rootEl.appendChild(node);
+      return node;
+    }
+    removeChildNode(node) {
+      this.rootEl.removeChild(node);
+      return this.rootEl;
+    }
+    getChildNode(query) {
+      const result = (query)
+        ? this.rootEl.childNodes.querySelectorAll(query)
+        : this.rootEl.childNodes;
+
+      return result;
+    }
+  };
+
   app.Abstract.Controller = class Controller {
     constructor(model) {
       this.model = model;
