@@ -7,10 +7,10 @@
     constructor(model, controller) {
       super(model, controller);
 
-      const list = new app.List();
+      const sidebar = new app.Sidebar(model);
 
       this.setRootEl(document.body);
-      this.rootEl.appendChild(list.rootEl);
+      this.rootEl.appendChild(sidebar.rootEl);
 
       if (app.utils.checkEventSupport()) {
         this.rootEl.classList.add('touch');

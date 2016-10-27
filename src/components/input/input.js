@@ -1,16 +1,10 @@
 (function () {
   'use strict';
 
-  const defaultConfig = {
-    onSubmit: () => {
-      console.debug('There\'s no action appended');
-    },
-  };
+  app.Input = class Input extends app.Abstract.Component {
+    constructor(model) {
+      super(model);
 
-  app.Input = {};
-
-  app.Input.View = class InputView {
-    constructor(config = defaultConfig) {
       const form = document.createElement('form');
       const input = document.createElement('input');
       const button = document.createElement('button');
@@ -33,14 +27,12 @@
           throw new Error('You are trying to add empty record.');
         }
 
-        config.onSubmit({value});
+        model.setNode(value);
         input.value = '';
       });
 
-      this.el = form;
-    }
-    get node() {
-      return this.el;
+      this.setRootEl(form);
     }
   };
+
 })();

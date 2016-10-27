@@ -80,11 +80,11 @@
       super(model, controller);
     }
     addChildNode(node) {
-      this.rootEl.appendChild(node);
+      this.rootEl.appendChild(node.rootEl);
       return node;
     }
     removeChildNode(node) {
-      this.rootEl.removeChild(node);
+      this.rootEl.removeChild(node.rootEl);
       return this.rootEl;
     }
     getChildNode(query) {
