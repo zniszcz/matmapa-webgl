@@ -2,15 +2,13 @@
   'use strict';
 
   app.ListElement = class ListElement extends app.Abstract.Component {
-    constructor(model, value) {
-      super(model);
+    constructor(model) {
+      super();
+      this.setModel(model);
       this.setRootEl(document.createElement('li'));
-      this.rootEl.textContent = value;
+      this.rootEl.textContent = model.getName();
       this.rootEl.classList.add('listElement');
-      this.rootEl.addEventListener('click', event => {
-        event.target.parentNode.removeChild(event.target);
-        model.removeItem(value);
-      });
+      this.rootEl.addEventListener('click', () => model.remove());
     }
   };
 })();

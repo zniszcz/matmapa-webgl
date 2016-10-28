@@ -16,19 +16,20 @@
 
       return result;
     }
-    setItem(item) {
+    setItem(value) {
+      const item = new app.UserModel(value);
       this.get('collection').push(item);
       this.fireEvent('change', item);
-      // Allow chaining
+
       return this;
     }
     removeItem(item) {
       if (!item) {
         return;
       }
+
       const index = this.get('collection').indexOf(item);
       this.get('collection').splice(index, 1);
-      this.fireEvent('change', item);
     }
     cleanItems() {
       this.set('collection', []);

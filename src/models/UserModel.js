@@ -36,8 +36,8 @@
 
     remove() {
       const user = this;
-      this.fireEvent('delete', user);
-      app.UserCollectionModel.fireEvent('delete', user);
+      console.dir(user);
+      this.fireEvent('remove', user);
     }
   };
 

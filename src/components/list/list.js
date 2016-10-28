@@ -1,37 +1,32 @@
 (function () {
   'use strict';
 
-  const Controller = class ListController extends app.Abstract.Controller {
-    constructor(model) {
-      super(model);
-
-      this.createElement = function (value) {
-        return new app.ListElement(model, value);
-      };
-    }
-  };
-
   app.List = class List extends app.Abstract.Component {
     constructor(model) {
-      const controller = new Controller(model);
-      super(model, controller);
+      super();
+      this.setModel(model);
 
       this.setRootEl(document.createElement('ul'));
       this.rootEl.classList.add('list');
-      this.list = model.getItem();
-      this.loadListElements(controller.createElement);
+      this.loadListElements();
 
       // Arrow Function in following line provide correct scope handling by Babel.js
-      model.addEventListener('add', value => this.addListElement(controller.createElement, value));
+      model.addEventListener('change', () => this.loadListElements());
     }
 
-    loadListElements(createElement) {
-      this.list.forEach(value => createElement(value));
+    loadListElements() {
+      this.getRootEl().innerHTML = '';
+      this.getModel().getItems().forEach(itemModel => this.addListElement(itemModel));
     }
 
-    addListElement(createElement, value) {
-      const newElem = createElement(value);
-      this.addChildNode(newElem);
+    addListElement(itemModel) {
+      itemModel.addEventListener('remove', itemModel => {
+        this.getModel().removeItem(itemModel);
+        this.getModel().fireEvent('change');
+      });
+      const elem = new app.ListElement(itemModel);
+
+      this.addChildNode(elem);
     }
   };
 })();
