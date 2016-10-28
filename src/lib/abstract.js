@@ -48,7 +48,7 @@
       return false;
     }
 
-    cleanNodes() {
+    cleanCollection() {
       this.properties = {};
     }
   };
