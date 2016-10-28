@@ -18,7 +18,7 @@
 
       this.setRootEl(document.createElement('ul'));
       this.rootEl.classList.add('list');
-      this.list = model.getNode();
+      this.list = model.getItem();
       this.loadListElements(controller.createElement);
 
       // Arrow Function in following line provide correct scope handling by Babel.js

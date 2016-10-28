@@ -9,7 +9,7 @@
       this.rootEl.classList.add('listElement');
       this.rootEl.addEventListener('click', event => {
         event.target.parentNode.removeChild(event.target);
-        model.removeNode(value);
+        model.removeItem(value);
       });
     }
   };

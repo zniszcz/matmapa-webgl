@@ -27,7 +27,7 @@
           throw new Error('You are trying to add empty record.');
         }
 
-        model.setNode(value);
+        model.setItem(value);
         input.value = '';
       });
 

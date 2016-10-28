@@ -6,36 +6,33 @@
       super();
       this.set('name', []);
     }
-    getNode(query) {
-      // I'm trying to avoid allow acces to folowing variable by declaring it each method. Is it a good idea?
+    getItem(query) {
       const store = this.get('name');
       const result = (query) ? store.filter(elem => (elem === query)) : store;
 
       return result;
     }
-    setNode(value) {
-      const store = this.get('name');
-      store.push(value);
+    setItem(value) {
+      this.get('name').push(value);
       this.fireEvent('add', value);
-
-      return store;
     }
-    findNodes(query = '') {
+    removeItem(query) {
+      if (!query) {
+        return;
+      }
+      const elem = this.getItem(query);
+      const index = this.get('name').indexOf(elem);
+      this.remove(index);
+      this.fireEvent('delete', elem);
+    }
+    // Folowing methods are prepparing to develop this structure
+    findItem(query = '') {
       const store = this.get('name');
       const result = store.filter(elem => elem.includes(query));
 
       return result;
     }
-    removeNode(query) {
-      if (!query) {
-        return;
-      }
-      const elem = this.getNode(query);
-      const index = this.get('name').indexOf(elem);
-      this.remove(index);
-      this.fireEvent('delete', elem);
-    }
-    cleanNodes() {
+    cleanItems() {
       this.set('name', []);
       return this.get('name');
     }
