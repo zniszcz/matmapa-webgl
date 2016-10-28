@@ -27,15 +27,13 @@
       return result;
     }
     removeNode(query) {
-      let res;
-
-      if (query) {
-        const elem = this.getNode(query);
-        const index = this.get('name').indexOf(elem);
-        res = this.remove(index);
+      if (!query) {
+        return;
       }
-
-      return res;
+      const elem = this.getNode(query);
+      const index = this.get('name').indexOf(elem);
+      this.remove(index);
+      this.fireEvent('delete', elem);
     }
     cleanNodes() {
       this.set('name', []);

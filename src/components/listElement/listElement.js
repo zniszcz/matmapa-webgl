@@ -2,27 +2,15 @@
   'use strict';
 
   app.ListElement = class ListElement extends app.Abstract.Component {
-    constructor(model) {
+    constructor(model, value) {
       super(model);
       this.setRootEl(document.createElement('li'));
-      this.rootEl.textContent = model;
+      this.rootEl.textContent = value;
       this.rootEl.classList.add('listElement');
-      this.rootEl.addEventListener('click', model.removeElement);
-    }
-  };
-
-  /* app.ListElement.View = class ListElementView {
-    constructor(options = defaultConfig) {
-      this.el = document.createElement('li');
-      this.el.textContent = options.value;
-
-      this.el.classList.add('listElement');
-      this.el.addEventListener('click', event => {
-        this.el.parentNode.removeChild(event.target);
+      this.rootEl.addEventListener('click', event => {
+        event.target.parentNode.removeChild(event.target);
+        model.removeNode(value);
       });
     }
-    get node() {
-      return this.el;
-    }
-  };*/
+  };
 })();
