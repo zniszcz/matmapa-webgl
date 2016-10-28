@@ -102,8 +102,6 @@
 
       return result;
     }
-    // // Folowing line provide protection before trying to render component as page view
-    // render() {}
   };
 
   app.Abstract.Controller = class Controller {
