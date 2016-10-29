@@ -20,5 +20,8 @@
     sidebar.add(input.node);
     sidebar.add(list.node);
 
+    if (app.utils.checkEventSupport()) {
+      document.body.classList.add('touch');
+    }
   });
 })();
