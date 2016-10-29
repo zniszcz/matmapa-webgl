@@ -16,7 +16,8 @@
 
     fireEvent(eventName, data) {
       if (Array.isArray(this.events[eventName])) {
-        this.events[eventName].forEach(evt => evt(data));
+        const events = this.events[eventName].concat([]);
+        events.forEach(evt => evt(data));
       }
     }
   };
@@ -28,8 +29,7 @@
     }
 
     get(key) {
-      const result = (key) ? this.properties[key] : this.properties;
-      return result;
+      return this.properties[key];
     }
 
     set(key, value) {
@@ -41,11 +41,8 @@
     }
 
     remove(key) {
-      const res = this.properties[key];
-      if (delete this.properties[key]) {
-        return res;
-      }
-      return false;
+      delete this.properties[key];
+      this.fireEvent('change');
     }
 
     cleanCollection() {
@@ -78,15 +75,6 @@
     setRootEl(el) {
       this.rootEl = el;
     }
-    render() {
-      this.setRootEl(document.body);
-    }
-  };
-
-  app.Abstract.Component = class Component extends app.Abstract.View {
-    constructor(model, controller) {
-      super(model, controller);
-    }
     addChildNode(node) {
       this.rootEl.appendChild(node.rootEl);
       return node;
@@ -101,6 +89,8 @@
         : this.rootEl.childNodes;
 
       return result;
+    }
+    render() {
     }
   };
 

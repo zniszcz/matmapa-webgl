@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  app.ListElement = class ListElement extends app.Abstract.Component {
+  app.ListElement = class ListElement extends app.Abstract.View {
     constructor(model) {
       super();
       this.setModel(model);

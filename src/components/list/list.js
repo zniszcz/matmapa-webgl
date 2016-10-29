@@ -1,17 +1,19 @@
 (function () {
   'use strict';
 
-  app.List = class List extends app.Abstract.Component {
+  app.List = class List extends app.Abstract.View {
     constructor(model) {
       super();
       this.setModel(model);
-
       this.setRootEl(document.createElement('ul'));
-      this.rootEl.classList.add('list');
-      this.loadListElements();
 
       // Arrow Function in following line provide correct scope handling by Babel.js
       model.addEventListener('change', () => this.loadListElements());
+    }
+
+    render() {
+      this.rootEl.classList.add('list');
+      this.loadListElements();
     }
 
     loadListElements() {
