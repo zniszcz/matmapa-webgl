@@ -12,7 +12,7 @@
         throw new Error('You are trying to add empty record.');
       }
 
-      this.getModel().setItem(this.getView().getInputValue());
+      this.getModel().setItem(new app.UserModel(this.getView().getInputValue()));
       this.getView().reset();
     }
   };

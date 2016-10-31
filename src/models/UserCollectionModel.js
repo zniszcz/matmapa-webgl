@@ -5,7 +5,6 @@
     constructor() {
       super();
       this.set('collection', []);
-      this.addEventListener('delete', item => this.removeItem(item));
     }
     getItems() {
       return this.get('collection');
@@ -16,10 +15,9 @@
 
       return result;
     }
-    setItem(value) {
-      const item = new app.UserModel(value);
+    setItem(item) {
       this.get('collection').push(item);
-      this.fireEvent('change', item);
+      this.fireEvent('change');
 
       return this;
     }
@@ -33,7 +31,6 @@
     }
     cleanItems() {
       this.set('collection', []);
-      return this.get('collection');
     }
 
   };
