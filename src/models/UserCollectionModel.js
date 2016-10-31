@@ -18,7 +18,6 @@
     setItem(item) {
       item.addEventListener('remove', () => {
         this.removeItem(item);
-        this.fireEvent('change');
       });
       this.get('collection').push(item);
       this.fireEvent('change');
@@ -31,8 +30,8 @@
       }
 
       const index = this.get('collection').indexOf(item);
-      this.fireEvent('change');
       this.get('collection').splice(index, 1);
+      this.fireEvent('change');
     }
     cleanItems() {
       this.set('collection', []);

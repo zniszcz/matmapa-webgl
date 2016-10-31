@@ -47,6 +47,7 @@
 
     cleanCollection() {
       this.properties = {};
+      this.fireEvent('change');
     }
   };
 
