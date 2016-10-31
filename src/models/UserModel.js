@@ -35,9 +35,7 @@
     }
 
     remove() {
-      const user = this;
-      console.dir(user);
-      this.fireEvent('remove', user);
+      this.fireEvent('remove');
     }
   };
 
