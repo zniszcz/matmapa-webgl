@@ -76,21 +76,6 @@
     setRootEl(el) {
       this.rootEl = el;
     }
-    addChildNode(node) {
-      this.rootEl.appendChild(node.rootEl);
-      return node;
-    }
-    removeChildNode(node) {
-      this.rootEl.removeChild(node.rootEl);
-      return this.rootEl;
-    }
-    getChildNode(query) {
-      const result = (query)
-        ? this.rootEl.childNodes.querySelectorAll(query)
-        : this.rootEl.childNodes;
-
-      return result;
-    }
     render() {
     }
   };

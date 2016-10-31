@@ -23,7 +23,7 @@
 
     addListElement(itemModel) {
       const elem = new app.ListElement(itemModel);
-      this.addChildNode(elem);
+      this.getRootEl().appendChild(elem.getRootEl());
     }
   };
 })();

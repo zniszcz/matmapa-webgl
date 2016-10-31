@@ -9,7 +9,7 @@
       this.sidebar = new app.Sidebar(model);
     }
     render() {
-      this.addChildNode(this.sidebar);
+      this.getRootEl().appendChild(this.sidebar.getRootEl());
       this.sidebar.render();
 
       if (app.utils.checkEventSupport()) {

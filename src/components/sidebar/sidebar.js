@@ -17,8 +17,8 @@
       input.render();
       list.render();
 
-      this.addChildNode(input);
-      this.addChildNode(list);
+      this.getRootEl().appendChild(input.getRootEl());
+      this.getRootEl().appendChild(list.getRootEl());
     }
   };
 })();
