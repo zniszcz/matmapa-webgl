@@ -18,6 +18,7 @@
     setItem(item) {
       item.addEventListener('remove', () => {
         this.removeItem(item);
+        this.fireEvent('change');
       });
       this.get('collection').push(item);
       this.fireEvent('change');

@@ -22,12 +22,7 @@
     }
 
     addListElement(itemModel) {
-      itemModel.addEventListener('remove', itemModel => {
-        this.getModel().removeItem(itemModel);
-        this.getModel().fireEvent('change');
-      });
       const elem = new app.ListElement(itemModel);
-
       this.addChildNode(elem);
     }
   };
