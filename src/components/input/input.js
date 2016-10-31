@@ -8,12 +8,12 @@
     onSubmit(event) {
       event.preventDefault();
 
-      if (!this.getView().getInput().value) {
+      if (!this.getView().getInputValue()) {
         throw new Error('You are trying to add empty record.');
       }
 
-      this.getModel().setItem(this.getView().getInput().value);
-      this.getView().getInput().value = '';
+      this.getModel().setItem(this.getView().getInputValue());
+      this.getView().reset();
     }
   };
 
@@ -22,30 +22,29 @@
       const controller = new InputController(model);
       super(model, controller);
 
-      model.setView(this);
+      controller.setView(this);
 
-      const form = document.createElement('form');
-
-      this.setRootEl(form);
+      this.setRootEl(document.createElement('form'));
     }
-    setInput(input) {
-      this.input = input;
+    getInputValue() {
+      return this.input.value;
     }
-    getInput() {
-      return this.input;
+    reset() {
+      this.input.value = '';
     }
     render() {
-      this.setInput(document.createElement('input'));
       const button = document.createElement('button');
 
+      this.input = document.createElement('input');
+
       this.getRootEl().classList.add('input');
-      this.getInput().classList.add('input__input');
+      this.input.classList.add('input__input');
       button.classList.add('input__button');
 
       button.type = 'submit';
       button.textContent = 'Add';
 
-      this.getRootEl().appendChild(this.getInput());
+      this.getRootEl().appendChild(this.input);
       this.getRootEl().appendChild(button);
 
       this.getRootEl().addEventListener('submit', event => this.getController().onSubmit(event));
