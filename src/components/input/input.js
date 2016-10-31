@@ -5,41 +5,50 @@
     constructor(model) {
       super(model);
     }
-    onSubmit(event, input) {
+    onSubmit(event) {
       event.preventDefault();
 
-      if (!input.value) {
+      if (!this.getView().getInput().value) {
         throw new Error('You are trying to add empty record.');
       }
 
-      this.getModel().setItem(input.value);
-      input.value = '';
+      this.getModel().setItem(this.getView().getInput().value);
+      this.getView().getInput().value = '';
     }
   };
 
   app.Input = class Input extends app.Abstract.View {
     constructor(model) {
-      super(model, new InputController(model));
+      const controller = new InputController(model);
+      super(model, controller);
+
+      model.setView(this);
 
       const form = document.createElement('form');
 
       this.setRootEl(form);
     }
+    setInput(input) {
+      this.input = input;
+    }
+    getInput() {
+      return this.input;
+    }
     render() {
-      const input = document.createElement('input');
+      this.setInput(document.createElement('input'));
       const button = document.createElement('button');
 
       this.getRootEl().classList.add('input');
-      input.classList.add('input__input');
+      this.getInput().classList.add('input__input');
       button.classList.add('input__button');
 
       button.type = 'submit';
       button.textContent = 'Add';
 
-      this.getRootEl().appendChild(input);
+      this.getRootEl().appendChild(this.getInput());
       this.getRootEl().appendChild(button);
 
-      this.getRootEl().addEventListener('submit', event => this.getController().onSubmit(event, input));
+      this.getRootEl().addEventListener('submit', event => this.getController().onSubmit(event));
     }
   };
 
