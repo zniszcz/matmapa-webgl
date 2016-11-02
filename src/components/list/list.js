@@ -8,15 +8,15 @@
       this.setRootEl(document.createElement('ul'));
 
       // Arrow Function in following line provide correct scope handling by Babel.js
-      model.addEventListener('change', () => this.loadListElements());
+      model.addEventListener('change', () => this.update());
     }
 
     render() {
       this.rootEl.classList.add('list');
-      this.loadListElements();
+      this.update();
     }
 
-    loadListElements() {
+    update() {
       this.getRootEl().innerHTML = '';
       this.getModel().getItems().forEach(itemModel => this.addListElement(itemModel));
     }
