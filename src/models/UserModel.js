@@ -37,6 +37,10 @@
     remove() {
       this.fireEvent('remove');
     }
+
+    static isValidUserName(name) {
+      return name.length;
+    }
   };
 
 })();

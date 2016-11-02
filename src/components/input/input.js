@@ -8,12 +8,12 @@
     onSubmit(event) {
       event.preventDefault();
 
-      if (!this.getView().getInputValue()) {
-        throw new Error('You are trying to add empty record.');
+      if (app.UserModel.isValidUserName(this.getView().getInputValue())) {
+        this.getModel().setItem(new app.UserModel(this.getView().getInputValue()));
+        this.getView().reset();
+      } else {
+        this.getView().logNotValid('You are trying to add empty record.');
       }
-
-      this.getModel().setItem(new app.UserModel(this.getView().getInputValue()));
-      this.getView().reset();
     }
   };
 
@@ -31,6 +31,9 @@
     }
     reset() {
       this.input.value = '';
+    }
+    logNotValid(msg) {
+      throw new Error(msg);
     }
     render() {
       const button = document.createElement('button');
