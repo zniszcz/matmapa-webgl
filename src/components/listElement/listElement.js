@@ -1,20 +1,14 @@
 (function () {
   'use strict';
-  const defaultConfig = {
-    value: '',
-  };
-  app.ListElement = class ListElement {
-    constructor(options = defaultConfig) {
-      this.el = document.createElement('li');
-      this.el.textContent = options.value;
 
-      this.el.classList.add('listElement');
-      this.el.addEventListener('click', event => {
-        this.el.parentNode.removeChild(event.target);
-      });
-    }
-    get node() {
-      return this.el;
+  app.ListElement = class ListElement extends app.Abstract.View {
+    constructor(model) {
+      super();
+      this.setModel(model);
+      this.setRootEl(document.createElement('li'));
+      this.rootEl.textContent = model.getName();
+      this.rootEl.classList.add('listElement');
+      this.rootEl.addEventListener('click', () => model.remove());
     }
   };
 })();

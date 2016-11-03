@@ -16,8 +16,14 @@ module.exports = {
   },
   concatOrder: {
     js: [
-        './src/main.js',
-        './src/**/!(main).js',
+        './src/bootstrap.js',
+        './src/lib/abstract.js',
+        './src/lib/Abstract/Observable.js',
+        './src/lib/Abstract/Model.js',
+        './src/lib/Abstract/View.js',
+        './src/lib/Abstract/Controller.js',
+        './src/lib/util.js',
+        './src/**/!(bootstrap).js',
     ]
   },
 };

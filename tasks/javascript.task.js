@@ -8,6 +8,7 @@ const babel = require('gulp-babel');
 const gutil = require('gulp-util');
 const config = require('./config');
 const sourcemaps = require('gulp-sourcemaps');
+const dedupe = require('gulp-dedupe');
 
 module.exports = gulp => {
 
@@ -19,6 +20,7 @@ module.exports = gulp => {
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(babel())
+      .pipe(dedupe())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(config.path.js));
@@ -27,6 +29,7 @@ module.exports = gulp => {
   gulp.task('build-javascript:prod', () => {
     return gulp.src(config.concatOrder.js)
       .pipe(babel())
+      .pipe(dedupe())
       .pipe(concat('app.min.js'))
       .pipe(uglify())
       .pipe(rev())

@@ -1,17 +1,29 @@
 (function () {
   'use strict';
 
-  app.List = class List {
-    constructor() {
-      this.el = document.createElement('ul');
-      this.el.classList.add('list');
+  app.List = class List extends app.Abstract.View {
+    constructor(model) {
+      super();
+      this.setModel(model);
+      this.setRootEl(document.createElement('ul'));
+
+      // Arrow Function in following line provide correct scope handling by Babel.js
+      model.addEventListener('change', () => this.update());
     }
-    get node() {
-      return this.el;
+
+    render() {
+      this.rootEl.classList.add('list');
+      this.update();
     }
-    add(value) {
-      const li = new app.ListElement(value);
-      return this.el.appendChild(li.node);
+
+    update() {
+      this.getRootEl().innerHTML = '';
+      this.getModel().getItems().forEach(itemModel => this.addListElement(itemModel));
+    }
+
+    addListElement(itemModel) {
+      const elem = new app.ListElement(itemModel);
+      this.getRootEl().appendChild(elem.getRootEl());
     }
   };
 })();

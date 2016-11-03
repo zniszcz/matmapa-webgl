@@ -1,44 +1,57 @@
 (function () {
   'use strict';
 
-  const defaultConfig = {
-    onSubmit: () => {
-      console.debug('There\'s no action appended');
-    },
+  const InputController = class InputController extends app.Abstract.Controller {
+    constructor(model) {
+      super(model);
+    }
+    onSubmit(event) {
+      event.preventDefault();
+
+      if (app.UserModel.isValidUserName(this.getView().getInputValue())) {
+        this.getModel().setItem(new app.UserModel(this.getView().getInputValue()));
+        this.getView().reset();
+      } else {
+        this.getView().logNotValid('You are trying to add empty record.');
+      }
+    }
   };
 
-  app.Input = class Input {
-    constructor(config = defaultConfig) {
-      const form = document.createElement('form');
-      const input = document.createElement('input');
+  app.Input = class Input extends app.Abstract.View {
+    constructor(model) {
+      const controller = new InputController(model);
+      super(model, controller);
+
+      controller.setView(this);
+
+      this.setRootEl(document.createElement('form'));
+    }
+    getInputValue() {
+      return this.input.value;
+    }
+    reset() {
+      this.input.value = '';
+    }
+    logNotValid(msg) {
+      throw new Error(msg);
+    }
+    render() {
       const button = document.createElement('button');
 
-      form.classList.add('input');
-      input.classList.add('input__input');
+      this.input = document.createElement('input');
+
+      this.getRootEl().classList.add('input');
+      this.input.classList.add('input__input');
       button.classList.add('input__button');
 
       button.type = 'submit';
       button.textContent = 'Add';
 
-      form.appendChild(input);
-      form.appendChild(button);
+      this.getRootEl().appendChild(this.input);
+      this.getRootEl().appendChild(button);
 
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const value = input.value;
-
-        if (!value) {
-          throw new Error('You are trying to add empty record.');
-        }
-
-        config.onSubmit({value});
-        input.value = '';
-      });
-
-      this.el = form;
-    }
-    get node() {
-      return this.el;
+      this.getRootEl().addEventListener('submit', event => this.getController().onSubmit(event));
     }
   };
+
 })();
