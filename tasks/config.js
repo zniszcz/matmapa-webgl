@@ -16,6 +16,8 @@ module.exports = {
   },
   concatOrder: {
     js: [
+        './node_modules/pixi.js/dist/pixi.js',
+        //'./node_modules/phaser/build/phaser.js',
         './src/bootstrap.js',
         './src/lib/abstract.js',
         './src/lib/Abstract/Observable.js',
