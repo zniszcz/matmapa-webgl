@@ -6,11 +6,18 @@
       super(model, controller);
 
       this.setRootEl(document.body);
-      this.sidebar = new app.Sidebar(model);
+
+      const visibleCollection = app.levelService.getStream();
+
+      this.zoom = new app.Zoom(visibleCollection);
+      this.canvas = new app.Canvas(visibleCollection);
     }
     render() {
-      this.getRootEl().appendChild(this.sidebar.getRootEl());
-      this.sidebar.render();
+      this.rootEl.appendChild(this.zoom.getRootEl());
+      this.rootEl.appendChild(this.canvas.getRootEl());
+
+      this.zoom.render();
+      this.canvas.render();
 
       if (app.utils.checkEventSupport()) {
         this.getRootEl().classList.add('touch');

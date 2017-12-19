@@ -21,6 +21,7 @@ module.exports = {
         './src/lib/Abstract/Observable.js',
         './src/lib/Abstract/Model.js',
         './src/lib/Abstract/View.js',
+        './src/lib/Abstract/CanvasElementView.js',
         './src/lib/Abstract/Controller.js',
         './src/lib/util.js',
         './src/**/!(bootstrap).js',
