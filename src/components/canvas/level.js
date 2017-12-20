@@ -6,24 +6,17 @@
       super(model);
       this.setRootEl(new PIXI.Container());
     }
-    createNode(model, topOffset) {
+    createNode(model) {
       const node = new app.Node(model);
-      node.setContext(this.ctx);
-      node.setCoordinates({
-        top: topOffset,
-        left: 45,
-      });
       return node;
     }
     render() {
       const lessons = this.model.get('nodes');
-      let topPadding = 45;
       lessons.forEach(lesson => {
         const model = app.NodeModel.fromJSON(lesson);
-        const node = this.createNode(model, topPadding);
+        const node = this.createNode(model);
         node.render();
         this.rootEl.addChild(node.getRootEl());
-        topPadding += 100;
       });
     }
   };
