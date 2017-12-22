@@ -15,6 +15,7 @@
     }
     update() {
       this.lvlInput.value = this.model.get('lvl');
+      this.decrementButton.disabled = !(this.model.get('lvl'));
     }
     render() {
       const rootEl = this.rootEl;
@@ -29,6 +30,7 @@
       this.lvlInput.disabled = true;
 
       this.decrementButton.textContent = 'Zoom out';
+      this.decrementButton.disabled = !(this.model.get('lvl'));
 
       rootEl.appendChild(this.decrementButton);
       rootEl.appendChild(this.lvlInput);

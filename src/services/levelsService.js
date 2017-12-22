@@ -34,10 +34,12 @@
     }
     zoomIn() {
       this.lvl++;
+      this.stream.set('lvl', this.lvl);
       return this.show();
     }
     zoomOut() {
       this.lvl--;
+      this.stream.set('lvl', this.lvl);
       return this.show();
     }
 }
