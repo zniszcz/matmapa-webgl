@@ -15,13 +15,10 @@
       this.setRootEl(new PIXI.Container());
     }
     createCircle() {
-      // const currentLvl = app.levelService.getLvl();
-      // const scale = ((currentLvl - this.model.get('from') + 1) * CONFIG.LESSON_GROWTH_TEMPO);
       this.circle = new PIXI.Graphics();
       this.circle.lineStyle(1, 0x000000, 1);
       this.circle.beginFill(this.model.get('bgColor'));
       this.circle.drawCircle(0, 0, CONFIG.LESSON_STARTUP_WIDTH);
-      // this.circle.scale.set(scale, scale);
       this.circle.endFill();
 
       this.circle.x = 0;
