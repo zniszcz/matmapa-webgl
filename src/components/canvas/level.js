@@ -12,8 +12,7 @@
     }
     render() {
       const lessons = this.model.get('nodes');
-      lessons.forEach(lesson => {
-        const model = app.NodeModel.fromJSON(lesson);
+      lessons.forEach(model => {
         const node = this.createNode(model);
         node.render();
         this.rootEl.addChild(node.getRootEl());

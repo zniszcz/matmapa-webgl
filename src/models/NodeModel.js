@@ -16,6 +16,12 @@
     }
     static fromJSON(options) {
       const nodeModel = new app.NodeModel(options);
+      const children = [];
+      options.children.forEach(child => {
+        const childModel = app.NodeModel.fromJSON(child);
+        children.push(childModel);
+      });
+      nodeModel.set('children', children);
       return nodeModel;
     }
   };

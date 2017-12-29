@@ -20,10 +20,8 @@
         xhr.withCredentials = true;
         xhr.onload = () => {
           if (xhr.status === 200 || xhr.status === 201) {
-            const result = (JSON.parse(xhr.responseText)).lessons;
-            this.stream.set('nodes', result);
-            this.stream.set('lvl', this.lvl);
-            this.stream.fireEvent('updated');
+            const result = (JSON.parse(xhr.responseText));
+            this.stream.update(result);
             resolve();
           } else {
             reject(JSON.parse(xhr.responseText));
