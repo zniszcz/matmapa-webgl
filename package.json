@@ -6,6 +6,11 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/functionite/testapp.git"
   },
+  "scripts": {
+    "start": "gulp build",
+    "start:dev": "gulp",
+    "calculateChildNodes": "node ./bin/calcChildNodeCoordinates.js > ./assets/calcChildNodes.json"
+  },
   "license": "MIT",
   "homepage": "https://bitbucket.org/functionite/testapp#readme",
   "private": true,
@@ -40,8 +45,6 @@
     "run-sequence": "^1.2.2"
   },
   "dependencies": {
-    "phaser": "^2.6.2",
-    "pixi.js": "^4.6.2",
-    "three": "^0.88.0"
+    "pixi.js": "^4.6.2"
   }
 }
