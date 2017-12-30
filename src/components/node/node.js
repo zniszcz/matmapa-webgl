@@ -11,7 +11,6 @@
   app.Node = class Node extends app.Abstract.CanvasElementView {
     constructor(model) {
       super(model);
-      this.position = {};
       this.setRootEl(new PIXI.Container());
     }
     createCircle() {
@@ -45,6 +44,12 @@
 
       return text;
     }
+    createChildLayer() {
+      const childLayer = new app.ChildLayer(this.model);
+      childLayer.render();
+
+      return childLayer.getRootEl();
+    }
     render() {
       this.rootEl.width = 2 * CONFIG.LESSON_STARTUP_WIDTH;
       this.rootEl.height = 3 * CONFIG.LESSON_STARTUP_WIDTH;
@@ -58,8 +63,11 @@
 
       const circle = this.createCircle();
       const text = this.createText();
+      const childLayer = this.createChildLayer();
+
       this.rootEl.addChild(circle);
       this.rootEl.addChild(text);
+      this.rootEl.addChild(childLayer);
     }
   };
 })();

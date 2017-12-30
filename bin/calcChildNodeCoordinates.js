@@ -15,11 +15,11 @@ const count = (n) => {
             y: 0,
         };
 
-        const alpha = Math.PI * 2 / i;
-        const translate = (x) => (Math.round((x/2 + 0.5) * 10000) / 10000);
+        const alpha = (Math.PI * 2) / n;
+        const translate = (x) => (Math.round((x) * 10000) / 10000);
 
-        obj.x = translate(Math.sin(alpha));
-        obj.y = translate(Math.cos(alpha));
+        obj.x = translate(Math.sin(i * alpha));
+        obj.y = translate(Math.cos(i * alpha));
 
         result.push(obj);
     }
